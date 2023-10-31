@@ -1,12 +1,13 @@
 import { AiOutlineFilter } from "react-icons/ai";
 import { BiEditAlt, BiSearch, BiDotsHorizontalRounded } from "react-icons/bi";
-import { SiHomeassistantcommunitystore } from 'react-icons/si';
 import { FiPhone } from 'react-icons/fi';
-import { GrStatusGood } from 'react-icons/gr';
+import { IoIosArrowDown } from 'react-icons/io'
 import tablePeople from '../../assets/tableImage/tableIPeople.png';
+import tablePeople2 from '../../assets/tableImage/tablePeoplePic-2.png';
+import { FaRegUser } from "react-icons/fa";
 
-const LeadsTable = () => {
 
+const AccountTable = () => {
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 
@@ -34,32 +35,21 @@ const LeadsTable = () => {
                             <th className="py-2 px-4 text-sm font-normal text-left text-gray-500 ">
                                 <div className="flex items-center gap-x-3 font-semibold text-[16px]">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded-lg w-5 h-5 " />
-                                    Name - Mail
-                                </div>
-                            </th>
-
-                            <th className="px-12 py-2 text-left text-gray-500  font-semibold text-[16px]">
-                                <span className="text-2xl font-semibold">T</span> Title
-                            </th>
-
-                            <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
-                                <div className="flex items-center gap-x-2">
-                                    <SiHomeassistantcommunitystore />
-                                    <span>Company</span>
+                                    <p className="flex items-center">Name - Mail <IoIosArrowDown /></p>
                                 </div>
                             </th>
 
                             <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
                                 <div className="flex items-center gap-x-2">
                                     <FiPhone />
-                                    <span>Phone</span>
+                                    <p className="flex items-center">Phone <IoIosArrowDown /></p>
                                 </div>
                             </th>
 
                             <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
                                 <div className="flex items-center gap-x-2">
-                                    <GrStatusGood color="#717171" />
-                                    <span>Status</span>
+                                    <FaRegUser color="#717171" />
+                                    <p className="flex items-center">Account Owner Alias <IoIosArrowDown /></p>
                                 </div>
                             </th>
 
@@ -81,18 +71,11 @@ const LeadsTable = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -119,56 +102,11 @@ const LeadsTable = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                            <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -195,56 +133,11 @@ const LeadsTable = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                            <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -271,56 +164,11 @@ const LeadsTable = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                            <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -347,18 +195,11 @@ const LeadsTable = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -385,18 +226,11 @@ const LeadsTable = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -423,18 +257,11 @@ const LeadsTable = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        UI/UX Designer
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -446,6 +273,101 @@ const LeadsTable = () => {
                                 </div>
                             </td>
                         </tr>
+
+                        <tr>
+                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div className="inline-flex items-center gap-x-3">
+                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+
+                                    <div className="flex items-center gap-x-2">
+                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
+                                        <div>
+                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                <div className="flex items-center gap-x-2">
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                <div className="flex items-center gap-x-6">
+
+                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                        <BiDotsHorizontalRounded size={30} />
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div className="inline-flex items-center gap-x-3">
+                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+
+                                    <div className="flex items-center gap-x-2">
+                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
+                                        <div>
+                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                <div className="flex items-center gap-x-2">
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                <div className="flex items-center gap-x-6">
+
+                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                        <BiDotsHorizontalRounded size={30} />
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div className="inline-flex items-center gap-x-3">
+                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+
+                                    <div className="flex items-center gap-x-2">
+                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
+                                        <div>
+                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                <div className="flex items-center gap-x-2">
+                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
+                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                <div className="flex items-center gap-x-6">
+
+                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                        <BiDotsHorizontalRounded size={30} />
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+
                     </tbody>
                 </table>
 
@@ -491,4 +413,4 @@ const LeadsTable = () => {
     );
 };
 
-export default LeadsTable;
+export default AccountTable;

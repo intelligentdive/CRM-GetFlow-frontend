@@ -1,12 +1,11 @@
 import { AiOutlineFilter } from "react-icons/ai";
-import { BiEditAlt, BiSearch, BiDotsHorizontalRounded } from "react-icons/bi";
-import { SiHomeassistantcommunitystore } from 'react-icons/si';
-import { FiPhone } from 'react-icons/fi';
-import { GrStatusGood } from 'react-icons/gr';
+import { BiDotsHorizontalRounded, BiEditAlt, BiSearch, BiUserPin } from "react-icons/bi";
+import { FaRegUser } from "react-icons/fa";
+import { FiPhone } from "react-icons/fi";
 import tablePeople from '../../assets/tableImage/tableIPeople.png';
 
-const LeadsTable = () => {
 
+const ContactTable = () => {
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 
@@ -32,41 +31,40 @@ const LeadsTable = () => {
                     <thead className="bg-[#F8FAFC]">
                         <tr>
                             <th className="py-2 px-4 text-sm font-normal text-left text-gray-500 ">
-                                <div className="flex items-center gap-x-3 font-semibold text-[16px]">
+                                <div className="flex items-center gap-x-3 font-bold xl:text-[16px] text-[10px]">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded-lg w-5 h-5 " />
                                     Name - Mail
                                 </div>
                             </th>
 
-                            <th className="px-12 py-2 text-left text-gray-500  font-semibold text-[16px]">
-                                <span className="text-2xl font-semibold">T</span> Title
-                            </th>
-
-                            <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
+                            <th className="px-12 py-2 text-left text-gray-500  font-bold xl:text-[16px] text-[10px]">
                                 <div className="flex items-center gap-x-2">
-                                    <SiHomeassistantcommunitystore />
-                                    <span>Company</span>
+                                    <BiUserPin />
+                                    <span>Account Name</span>
                                 </div>
                             </th>
 
-                            <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
+                            <th className="px-4 py-2 font-bold xl:text-[16px] text-[10px] text-left text-gray-500 ">
                                 <div className="flex items-center gap-x-2">
                                     <FiPhone />
                                     <span>Phone</span>
                                 </div>
                             </th>
 
-                            <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
+                            <th className="px-4 py-2 font-bold xl:text-[16px] text-[10px] text-left text-gray-500 ">
                                 <div className="flex items-center gap-x-2">
-                                    <GrStatusGood color="#717171" />
-                                    <span>Status</span>
+                                    <FaRegUser />
+                                    <span>Contact Owner Alia</span>
                                 </div>
                             </th>
 
                             <th></th>
                         </tr>
                     </thead>
+
+
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+
                         <tr>
                             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div className="inline-flex items-center gap-x-3">
@@ -84,17 +82,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -122,17 +115,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                            <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -160,17 +148,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -198,17 +181,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                            <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -236,17 +214,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -274,17 +247,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                            <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -312,17 +280,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -350,17 +313,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -388,17 +346,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold bg-[#3EC99E] rounded-full text-white">Success</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -426,17 +379,12 @@ const LeadsTable = () => {
                             <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div>
                                     <p className="text-[#717171]">
-                                        UI/UX Designer
+                                    Acmi (Sample)
                                     </p>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">Lee Enterprise, Inc</td>
                             <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
-                                </div>
-                            </td>
+                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-6">
 
@@ -446,6 +394,9 @@ const LeadsTable = () => {
                                 </div>
                             </td>
                         </tr>
+                        
+
+
                     </tbody>
                 </table>
 
@@ -491,4 +442,4 @@ const LeadsTable = () => {
     );
 };
 
-export default LeadsTable;
+export default ContactTable;
