@@ -5,7 +5,7 @@ import SideNavBar from "../Shared/SideNavBar/SideNavBar";
 
 const Main = () => {
     return (
-        <div className="min-h-screen w-full">
+        <div className="min-h-screen w-full h-full">
             <div>
                 <Navbar></Navbar>
             </div>

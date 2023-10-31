@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "react-router-dom";
 import OpprotunitiesTable from "./OpprotunitiesTable";
+import OpprotunitiesModal from "./OpprotunitiesModal";
 
 
 const Opprotunities = () => {
@@ -28,7 +29,7 @@ const Opprotunities = () => {
 
 
             {
-                // isOpen == true && <AddContactModal setisOpen={setisOpen} />
+                isOpen == true && <OpprotunitiesModal setisOpen={setisOpen} />
             }
 
 

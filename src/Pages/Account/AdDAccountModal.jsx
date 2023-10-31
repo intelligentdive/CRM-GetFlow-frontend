@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
+import { RxCross1 } from "react-icons/rx";
 
 
 const AdDAccountModal = ({ setisOpen }) => {
@@ -16,7 +17,11 @@ const AdDAccountModal = ({ setisOpen }) => {
         <div className="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-30">
             <div className="relative overflow-hidden text-left bg-white rounded-lg shadow-xl w-[550px] p-6 max-h-[100vh] overflow-y-auto">
 
-                <h3 className="text-[26px] font-bold text-[#0A0A0A] capitalize" id="modal-title"> New Account</h3>
+            <div className="flex items-center justify-between">
+                    <h3 className="text-[26px] font-bold text-[#0A0A0A] capitalize" id="modal-title"> New Account </h3>
+                    <button className='btn bg-white hover:bg-white border p-1'><RxCross1 onClick={() => setisOpen(false)} size={25}></RxCross1></button>
+                </div>
+                
                 <h4 className="font-semibold text-[20px] mt-2">Account Information</h4>
                 <hr className="mt-2 mb-4" />
 
@@ -56,7 +61,7 @@ const AdDAccountModal = ({ setisOpen }) => {
                             <label className="font-semibold" htmlFor="selectLeadSource"> Type </label>
                             <select {...register('lead_source')} id="selectLeadSource" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                             >
-                                <option value='none' selected>None</option>
+                                <option value='none' selected>--none--</option>
                                 <option value="saving">Saving</option>
                                 <option value="running">Running</option>
                             </select>
@@ -66,7 +71,7 @@ const AdDAccountModal = ({ setisOpen }) => {
                             <label className="font-semibold" htmlFor="selectIndustryType"> Industry </label>
                             <select {...register('industry_type')} id="selectIndustryType" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                             >
-                                <option value='none' selected>None</option>
+                                <option value='none' selected>--none--</option>
                                 <option value="big">Big</option>
                                 <option value="small">Small</option>
                             </select>
@@ -112,7 +117,7 @@ const AdDAccountModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="billing_country_name">Billing Country </label>
                         <select {...register('billing_country_name')} id="billing_country_name" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='none' selected>None</option>
+                            <option value='none' selected>--none--</option>
                             <option value="usa">USA</option>
                             <option value="canada">CANADA</option>
                         </select>
@@ -122,7 +127,7 @@ const AdDAccountModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="billing_city_name">Billing City </label>
                         <select {...register('billing_city_name')} id="billing_city_name" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='none' selected>None</option>
+                            <option value='none' selected>--none--</option>
                             <option value="melborn">Melborn</option>
                             <option value="kaliifornia">Kalifornia</option>
                         </select>
@@ -152,7 +157,7 @@ const AdDAccountModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="shipping_country_name">Shipping Country </label>
                         <select {...register('shipping_country_name')} id="shipping_country_name" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='none' selected>None</option>
+                            <option value='none' selected>--none--</option>
                             <option value="usa">USA</option>
                             <option value="canada">CANADA</option>
                         </select>
@@ -162,7 +167,7 @@ const AdDAccountModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="shipping_city_name">Shipping City </label>
                         <select {...register('shipping_city_name')} id="shipping_city_name" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='none' selected>None</option>
+                            <option value='none' selected>--none--</option>
                             <option value="melborn">Melborn</option>
                             <option value="kaliifornia">Kalifornia</option>
                         </select>

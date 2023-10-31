@@ -543,9 +543,6 @@ const OpprotunitiesTable = () => {
                         </tr>
 
 
-
-
-
                     </tbody>
                 </table>
 

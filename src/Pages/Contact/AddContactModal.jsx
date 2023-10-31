@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
+import { RxCross1 } from "react-icons/rx";
 
 
 const AddContactModal = ({ setisOpen }) => {
@@ -15,9 +16,11 @@ const AddContactModal = ({ setisOpen }) => {
         <div className="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-30">
             <div className="relative overflow-hidden text-left bg-white rounded-lg shadow-xl w-[550px] p-6 max-h-[100vh] overflow-y-auto">
 
-                <h3 className="text-[26px] font-bold text-[#0A0A0A] capitalize" id="modal-title">
-                    New Contact
-                </h3>
+            <div className="flex items-center justify-between">
+                    <h3 className="text-[26px] font-bold text-[#0A0A0A] capitalize" id="modal-title"> New Contact </h3>
+                    <button className='btn bg-white hover:bg-white border p-1'><RxCross1 onClick={() => setisOpen(false)} size={25}></RxCross1></button>
+                </div>
+                
                 <h4 className="font-semibold text-[20px] mt-2">Contact Information</h4>
                 <hr className="mt-2 mb-4" />
 
@@ -99,7 +102,7 @@ const AddContactModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="mailing_country_name">Mailing Country </label>
                         <select {...register('mailing_country_name')} id="mailing_country_name" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='none' selected>None</option>
+                            <option value='none' selected>--none--</option>
                             <option value="usa">USA</option>
                             <option value="canada">CANADA</option>
                         </select>
@@ -109,7 +112,7 @@ const AddContactModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="mailing_city_name">Mailing City </label>
                         <select {...register('mailing_city_name')} id="mailing_city_name" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='none' selected>None</option>
+                            <option value='none' selected>--none--</option>
                             <option value="melborn">Melborn</option>
                             <option value="kaliifornia">Kalifornia</option>
                         </select>

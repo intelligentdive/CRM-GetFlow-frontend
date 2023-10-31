@@ -6,6 +6,7 @@ import Leads from "../Pages/Leads/Leads";
 import Account from "../Pages/Account/Account";
 import Contact from "../Pages/Contact/Contact";
 import Opprotunities from "../Pages/Opprotunities/Opprotunities";
+import Calender from "../Pages/Calender/Calender";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/opprotunities",
         element: <Opprotunities/>,
+      },
+      {
+        path: "/calender",
+        element: <Calender/>,
       }
     ],
   },

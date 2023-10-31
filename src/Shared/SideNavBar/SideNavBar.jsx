@@ -101,14 +101,14 @@ const SideNavBar = () => {
                 </div>
                 <div
                     className={
-                        pathname === "//"
+                        pathname === "/calender"
                             ? "nab_item text-[#E52CF0]"
                             : "text-[#717171] nab_item"
                     }
                 >
                     <div className="flex items-center justify-between mt-3 text-[18px] font-semibold">
                         <Link
-                            to="//"
+                            to="/calender"
                             className="hover:text-[#E52CF0] flex items-center gap-2"
                         >
                             <BiCalendar />
@@ -223,7 +223,7 @@ const SideNavBar = () => {
     );
 
     return (
-        <div className="hidden lg:block min-h-screen h-full relative pl-5">
+        <div className="hidden lg:block pl-5">
           <div className="">
             <div className="mt-5">
               <div className="flex items-center gap-2 rounded-lg border border-[#E7E7E7] xl:w-[200px] px-[10px] ">
@@ -238,8 +238,8 @@ const SideNavBar = () => {
                 <div>{navBar}</div>
               </div>
             </div>
-     
-            <div className=" absolute bottom-5 left-5">
+
+            <div className="mt-20">
               <div className="flex items-center text-[18px] font-semibold">
                 <button className="text-red-500 flex items-center gap-2">
                   <FiLogOut />
@@ -249,7 +249,7 @@ const SideNavBar = () => {
             </div>
           </div>
         </div>
-      );
+    );
 };
 
 export default SideNavBar;
