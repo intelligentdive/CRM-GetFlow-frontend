@@ -11,6 +11,7 @@ import Forecasts from "../Pages/Forecasts/Forecasts";
 import Reports from "../Pages/Reports/Reports";
 import Quotes from "../Pages/Quotes/Quotes";
 import Campaigns from "../Pages/Campaigns/Campaigns";
+import Tasks from "../Pages/Tasks/Tasks";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/campaings",
         element: <Campaigns/>,
+      },
+      {
+        path: "/tasks",
+        element: <Tasks/>,
       },
     ],
   },

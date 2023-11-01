@@ -13,8 +13,6 @@ const Campaigns = () => {
     const [value, setValue] = useState('All active Campaign')
     const [isOpen, setisOpen] = useState(false);
 
-    console.log(value);
-
     return (
         <div>
             <div className="md:flex md:items-center md:justify-between">
