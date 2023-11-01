@@ -1,10 +1,7 @@
 import { AiOutlineFilter } from "react-icons/ai";
 import { BiDotsHorizontalRounded, BiEditAlt, BiSearch } from "react-icons/bi";
 import { BsArrowDownCircle, BsCalendar2X } from "react-icons/bs";
-import tablePeople from '../../assets/tableImage/tableIPeople.png';
-import { FaRegUser } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
-import { MdOutlineSubscriptions } from "react-icons/md";
 import { FaMoneyBills } from "react-icons/fa6";
 
 const QuotesTable = () => {
@@ -29,7 +26,7 @@ const QuotesTable = () => {
 
             {/* Table Start */}
             <div className="mt-6 overflow-x-auto">
-                <table className="min-w-full">
+                <table className="min-w-full table">
                     <thead className="bg-[#F8FAFC]">
                         <tr>
                             <th className="py-2 px-4 text-sm font-normal text-left text-gray-500 ">

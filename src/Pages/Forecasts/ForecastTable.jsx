@@ -36,7 +36,7 @@ const ForecastTable = () => {
 
             {/* Table Start */}
             <div className="mt-6 overflow-x-auto">
-                <table className="min-w-full">
+                <table className="min-w-full table">
                     <thead className="bg-[#F8FAFC]">
                         <tr>
                             <th className="py-2 px-4 text-sm font-normal text-left text-gray-500 ">
@@ -102,7 +102,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +138,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
@@ -246,7 +246,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
@@ -282,7 +282,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
@@ -318,7 +318,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
@@ -354,7 +354,7 @@ const ForecastTable = () => {
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
                                         </div>
                                     </div>
                                 </div>
