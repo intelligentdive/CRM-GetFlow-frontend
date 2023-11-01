@@ -186,14 +186,14 @@ const SideNavBar = () => {
                 </div>
                 <div
                     className={
-                        pathname === "//"
+                        pathname === "/campaings"
                             ? "nab_item text-[#E52CF0]"
                             : "text-[#717171] nab_item"
                     }
                 >
                     <div className="flex items-center justify-between mt-3 text-[18px] font-semibold">
                         <Link
-                            to="//"
+                            to="/campaings"
                             className="hover:text-[#E52CF0] flex items-center gap-2"
                         >
                             <MdOutlineCampaign />

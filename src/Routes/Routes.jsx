@@ -10,6 +10,7 @@ import Calender from "../Pages/Calender/Calender";
 import Forecasts from "../Pages/Forecasts/Forecasts";
 import Reports from "../Pages/Reports/Reports";
 import Quotes from "../Pages/Quotes/Quotes";
+import Campaigns from "../Pages/Campaigns/Campaigns";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/quotes",
         element: <Quotes/>,
+      },
+      {
+        path: "/campaings",
+        element: <Campaigns/>,
       },
     ],
   },
