@@ -8,6 +8,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { MdArrowForwardIos } from "react-icons/md";
 import AddNewEvent from "./AddNewEvent";
+import ShowEventDetailsModal from "./ShowEventDetailsModal";
 const localizer = momentLocalizer(moment);
 
 
@@ -71,11 +72,6 @@ const Calender = () => {
             <div className="md:flex md:items-center md:justify-between">
                 <div>
                     <h1 className="lg:text-[34px] md:text-[30px] text-[24px] font-semibold">Calender</h1>
-                    {/* <div className="flex items-center gap-3">
-                        <Link className="disabled cursor-pointer text-[#717171] md:text-[20px] text-[18px]">Calender</Link>
-                        <MdArrowForwardIos color="#717171"></MdArrowForwardIos>
-                        <Link className="disabled cursor-pointer md:text-[20px] text-[18px] font-semibold">Recently  Viewed</Link>
-                    </div> */}
                 </div>
                 <div>
                     <button onClick={() => setAddModalShow(true)} className="flex items-center gap-2 btn bg-[#00B7E9] hover:bg-[#00B7E9] text-white p-3 rounded-2xl md:mt-0 mt-4 w-full justify-center"><AiOutlinePlus /> Add New</button>
@@ -108,9 +104,9 @@ const Calender = () => {
                         className="bg-white p-10"
                     />
                 </a>
-                {/* {
-                modalShow && data && <ShowEventDetailsModal data={data} setModalShow={setModalShow}></ShowEventDetailsModal>
-            } */}
+                {
+                modalShow && data && <ShowEventDetailsModal data={data} setModalShow={setModalShow} />
+            }
             {
                 AddModalShow && <AddNewEvent setAddModalShow={setAddModalShow} />
             }
@@ -127,15 +123,30 @@ export default Calender;
 
 
 
-
+// react date-time-peaker
 // const date = new Date('Sat Oct 28 2023 06:30:00 GMT+0600 (Bangladesh Standard Time)');
-
 // const year = date.getFullYear();
 // const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-based, so add 1 and pad with 0 if needed.
 // const day = String(date.getDate()).padStart(2, '0');
 // const hours = String(date.getHours()).padStart(2, '0');
 // const minutes = String(date.getMinutes()).padStart(2, '0');
 // const seconds = String(date.getSeconds()).padStart(2, '0');
-
 // const isoString = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
 // console.log(isoString); // Output: 2023-10-28T06:30:00
+
+
+
+// Locally input field date and time
+// const startDate = "2023-11-03"
+// const startTime = "02:27"
+// please convert it "2023-11-03T02:27:00"
+// and
+// const startDate = "2023-11-03"
+// const startTime = "14:27"
+// please convert it "2023-11-03T14:27:00"
+
+// answer
+// const startDate = "2023-11-03";
+// const startTime = "02:27";
+// const combinedDateTime = `${startDate}T${startTime}:00`;
+// console.log(combinedDateTime);
