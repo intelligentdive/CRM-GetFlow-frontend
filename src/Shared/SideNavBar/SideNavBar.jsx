@@ -118,14 +118,14 @@ const SideNavBar = () => {
                 </div>
                 <div
                     className={
-                        pathname === "//"
+                        pathname === "/forecasts"
                             ? "nab_item text-[#E52CF0]"
                             : "text-[#717171] nab_item"
                     }
                 >
                     <div className="flex items-center justify-between mt-3 text-[18px] font-semibold">
                         <Link
-                            to="//"
+                            to="/forecasts"
                             className="hover:text-[#E52CF0] flex items-center gap-2"
                         >
                             <SiPerforce />
@@ -152,14 +152,14 @@ const SideNavBar = () => {
                 </div>
                 <div
                     className={
-                        pathname === "//"
+                        pathname === "/reports"
                             ? "nab_item text-[#E52CF0]"
                             : "text-[#717171] nab_item"
                     }
                 >
                     <div className="flex items-center justify-between mt-3 text-[18px] font-semibold">
                         <Link
-                            to="//"
+                            to="/reports"
                             className="hover:text-[#E52CF0] flex items-center gap-2"
                         >
                             <MdOutlineReport />
@@ -169,14 +169,14 @@ const SideNavBar = () => {
                 </div>
                 <div
                     className={
-                        pathname === "//"
+                        pathname === "/quotes"
                             ? "nab_item text-[#E52CF0]"
                             : "text-[#717171] nab_item"
                     }
                 >
                     <div className="flex items-center justify-between mt-3 text-[18px] font-semibold">
                         <Link
-                            to="//"
+                            to="/quotes"
                             className="hover:text-[#E52CF0] flex items-center gap-2"
                         >
                             <MdRequestQuote />

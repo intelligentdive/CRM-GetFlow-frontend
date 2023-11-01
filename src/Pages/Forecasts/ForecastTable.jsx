@@ -1,13 +1,20 @@
 import { AiOutlineFilter } from "react-icons/ai";
-import { BiEditAlt, BiSearch, BiDotsHorizontalRounded } from "react-icons/bi";
-import { FiPhone } from 'react-icons/fi';
-import { IoIosArrowDown } from 'react-icons/io'
+import { BiDotsHorizontalRounded, BiEditAlt, BiSearch } from "react-icons/bi";
+import { FaMoneyBills } from "react-icons/fa6";
+import { ImClipboard } from "react-icons/im";
 import tablePeople from '../../assets/tableImage/tableIPeople.png';
-import tablePeople2 from '../../assets/tableImage/tablePeoplePic-2.png';
-import { FaRegUser } from "react-icons/fa";
+import { BsArrowDownCircle, BsCalendar2X } from "react-icons/bs";
+import { useState } from "react";
 
 
-const AccountTable = () => {
+const ForecastTable = () => {
+
+    const [isTooltipVisible, setTooltipVisible] = useState(false);
+
+    const toggleTooltip = () => {
+        setTooltipVisible(!isTooltipVisible);
+    };
+
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 
@@ -33,23 +40,51 @@ const AccountTable = () => {
                     <thead className="bg-[#F8FAFC]">
                         <tr>
                             <th className="py-2 px-4 text-sm font-normal text-left text-gray-500 ">
-                                <div className="flex items-center gap-x-3 font-semibold text-[16px]">
+                                <div className="flex items-center gap-x-3 font-semibold xl:text-[16px] text-[13px]">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded-lg w-5 h-5 " />
-                                    <p className="flex items-center">Name - Mail <IoIosArrowDown /></p>
+                                    Report Name
                                 </div>
                             </th>
 
-                            <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
+                            <th className="px-12 py-2 text-left text-gray-500  font-semibold xl:text-[16px] text-[13px]">
                                 <div className="flex items-center gap-x-2">
-                                    <FiPhone />
-                                    <p className="flex items-center">Phone <IoIosArrowDown /></p>
+                                    <FaMoneyBills />
+                                    <span>Amount</span>
                                 </div>
                             </th>
 
-                            <th className="px-4 py-2 font-semibold text-[16px] text-left text-gray-500 ">
+                            <th className="px-4 py-2 font-semibold xl:text-[16px] text-[13px] text-left text-gray-500 ">
                                 <div className="flex items-center gap-x-2">
-                                    <FaRegUser color="#717171" />
-                                    <p className="flex items-center">Account Owner Alias <IoIosArrowDown /></p>
+                                    <BsCalendar2X />
+                                    <span>Close Date</span>
+                                </div>
+                            </th>
+
+                            <th className="px-4 py-2 font-semibold xl:text-[16px] text-[13px] text-left text-gray-500 ">
+                                <div className="flex items-center gap-x-2">
+                                    <ImClipboard />
+                                    <span>Probalility</span>
+                                </div>
+                            </th>
+
+                            <th className="px-4 py-2 font-semibold xl:text-[16px] text-[13px] text-left text-gray-500 ">
+                                <div className="relative inline-block">
+                                    <div className="flex items-center gap-x-2" onMouseEnter={toggleTooltip}
+                                        onMouseLeave={toggleTooltip}>
+                                        <BsArrowDownCircle color="#717171" />
+                                        <span>Forecast Cat...</span>
+                                    </div>
+
+                                    {isTooltipVisible && (
+                                        <p className="absolute flex items-center justify-center w-48 p-2 text-gray-600 bg-white rounded-lg shadow-lg -left-[13.2rem] -top-4 dark:shadow-none shadow-gray-200 dark:bg-gray-800 dark:text-white">
+                                            <span className="truncate ">Forecast Category</span>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="absolute w-6 h-6 text-white transform rotate-45 -translate-y-1/2 fill-current -right-3 top-1/2 dark:text-gray-800" stroke="currentColor" viewBox="0 0 24 24" >
+                                                <path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"></path>
+                                            </svg>
+                                        </p>
+                                    )}
+
                                 </div>
                             </th>
 
@@ -57,6 +92,7 @@ const AccountTable = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+
                         <tr>
                             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div className="inline-flex items-center gap-x-3">
@@ -65,17 +101,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -96,17 +137,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -127,17 +173,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -158,17 +209,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -189,17 +245,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -220,17 +281,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -251,17 +317,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -282,79 +353,22 @@ const AccountTable = () => {
                                     <div className="flex items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <h2 className="font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests (Sample)</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
+                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div>
+                                    <p className="font-semibold"> 10.000.00 </p>
+                                </div>
+                            </td>
+                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
+                            <td className="px-4 py-4 text-[16px]">100%</td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                 <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <img className="object-cover w-10 h-10 rounded-full" src={tablePeople2} alt="" />
-                                    <h2 className="font-semibold size-[16px]">Murad Hasan</h2>
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
                                 </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
@@ -413,4 +427,4 @@ const AccountTable = () => {
     );
 };
 
-export default AccountTable;
+export default ForecastTable;

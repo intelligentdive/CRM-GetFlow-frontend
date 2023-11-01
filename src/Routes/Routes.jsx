@@ -7,6 +7,9 @@ import Account from "../Pages/Account/Account";
 import Contact from "../Pages/Contact/Contact";
 import Opprotunities from "../Pages/Opprotunities/Opprotunities";
 import Calender from "../Pages/Calender/Calender";
+import Forecasts from "../Pages/Forecasts/Forecasts";
+import Reports from "../Pages/Reports/Reports";
+import Quotes from "../Pages/Quotes/Quotes";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +43,19 @@ const router = createBrowserRouter([
       {
         path: "/calender",
         element: <Calender/>,
-      }
+      },
+      {
+        path: "/forecasts",
+        element: <Forecasts/>,
+      },
+      {
+        path: "/reports",
+        element: <Reports/>,
+      },
+      {
+        path: "/quotes",
+        element: <Quotes/>,
+      },
     ],
   },
 ]);
