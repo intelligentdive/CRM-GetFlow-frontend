@@ -2,6 +2,7 @@ import HomeTabs from "./HomeTabs";
 import LeadsEvents from "./LeadsEvents";
 import LeadsScoreChart from "./LeadsScoreChart";
 import SaleryPersonActivityChart from "./SaleryPersonActivityChart";
+import TeamPipeLineChart from "./TeamPipeLineChart";
 
 
 const Home = () => {
@@ -20,11 +21,11 @@ const Home = () => {
             </div>
 
             <div className="grid md:grid-cols-12 grid-cols-1 gap-5 mt-4">
-                <div className="md:col-span-6 bg-white border border-gray-300 rounded-lg">
+                <div className="md:col-span-7 bg-white border border-gray-300 rounded-lg">
                     <SaleryPersonActivityChart />
                 </div>
-                <div className="md:col-span-6 bg-white border border-gray-300 rounded-lg">
-                    <LeadsEvents />
+                <div className="md:col-span-5 bg-white border border-gray-300 rounded-lg">
+                    <TeamPipeLineChart />
                 </div>
             </div>
 

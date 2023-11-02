@@ -47,8 +47,8 @@ const SaleryPersonActivityChart = () => {
                 <h6 className="text-[18px] md:text-[26px] font-semibold"> Sales Person Activity </h6>
                 <button className="font-semibold border p-1 rounded-lg">View Report</button>
             </div>
-            <ResponsiveContainer width="100%" height={250}>
-                <RadialBarChart cx="70%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data}>
+            <ResponsiveContainer width="100%" height={240}>
+                <RadialBarChart cx="80%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={8} data={data}>
                     <RadialBar
                         minAngle={15}
                         label={{ position: 'center', fill: '#fff' }}
@@ -57,8 +57,8 @@ const SaleryPersonActivityChart = () => {
                         dataKey="uv"
                     />
                     <Legend iconSize={15} layout="vertical" verticalAlign="middle" wrapperStyle={style} formatter={(value, entry) => <span>
-                        <span className='text-black'>{entry.payload.name}</span>
-                        <span className="mx-5 text-black">{entry.payload.uv}%</span>
+                        <span className='text-black xl:text-lg lg:text-[14px] text-xs'>{entry.payload.name}</span>
+                        <span className="ml-2 text-black font-semibold">{entry.payload.uv}%</span>
                     </span>} />
                 </RadialBarChart>
             </ResponsiveContainer>
