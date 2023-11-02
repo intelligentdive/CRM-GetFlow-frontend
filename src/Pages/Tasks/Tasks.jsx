@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AddTaskModal from "./AddTaskModal";
 import { AiOutlinePlus } from "react-icons/ai";
 import TaskTable from "./TaskTable";
-import TaskDetails from "./TaskDetails";
+import TaskDetails from "./TaskDetails/TaskDetails";
 
 
 const Tasks = () => {

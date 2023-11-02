@@ -4,6 +4,7 @@ import SideNavBar from "../Shared/SideNavBar/SideNavBar";
 
 
 const Main = () => {
+
     return (
         <div className="min-h-screen w-full h-full">
             <div>
@@ -14,7 +15,8 @@ const Main = () => {
                     <SideNavBar></SideNavBar>
                 </div>
                 <div className="lg:col-span-10 col-span-4 bg-mainBG min-h-screen w-full">
-                    <div className="lg:mx-[30px] mx-4 lg:mt-[30px] mt-4">
+                    <div className="lg:mx-[30px] mx-4 lg:mt-[30px] mt-4"
+                    >
                         <Outlet></Outlet>
                     </div>
                 </div>
