@@ -39,7 +39,12 @@ const AdDAccountModal = ({ setisOpen }) => {
 
                     <div className="mt-3">
                         <label className="font-semibold" htmlFor="phone_number">Phone</label>
-                        <input placeholder="Phone Number" {...register("phone_number")} id="phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                        <input placeholder="Phone Number" {...register("phone_number")} onKeyPress={(e) => {
+                                    const keyCode = e.which || e.keyCode;
+                                    if (keyCode < 48 || keyCode > 57) {
+                                        e.preventDefault();
+                                    }
+                                }} id="phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
                     </div>
 
                     <div className="mt-3">
@@ -90,7 +95,12 @@ const AdDAccountModal = ({ setisOpen }) => {
                     <div className="grid gap-6 mt-4 grid-cols-2">
                         <div className="mt-3">
                             <label className="font-semibold" htmlFor="additional_phone_number">Phone</label>
-                            <input placeholder="Phone" {...register("additional_phone_number")} id="additional_phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                            <input placeholder="Phone" {...register("additional_phone_number")} onKeyPress={(e) => {
+                                    const keyCode = e.which || e.keyCode;
+                                    if (keyCode < 48 || keyCode > 57) {
+                                        e.preventDefault();
+                                    }
+                                }} id="additional_phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
                         </div>
 
                         <div className="mt-3">

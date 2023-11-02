@@ -12,6 +12,7 @@ import Reports from "../Pages/Reports/Reports";
 import Quotes from "../Pages/Quotes/Quotes";
 import Campaigns from "../Pages/Campaigns/Campaigns";
 import Tasks from "../Pages/Tasks/Tasks";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/tasks",
         element: <Tasks/>,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard/>,
       },
     ],
   },

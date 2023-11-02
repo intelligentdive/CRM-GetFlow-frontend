@@ -57,7 +57,12 @@ const AddContactModal = ({ setisOpen }) => {
 
                     <div className="mt-3">
                         <label className="font-semibold" htmlFor="phone_number">Phone</label>
-                        <input placeholder="Phone Number" {...register("phone_number")} id="phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                        <input placeholder="Phone Number" {...register("phone_number")} onKeyPress={(e) => {
+                                    const keyCode = e.which || e.keyCode;
+                                    if (keyCode < 48 || keyCode > 57) {
+                                        e.preventDefault();
+                                    }
+                                }} id="phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
                     </div>
 
                     <h4 className="font-semibold text-[20px] mt-6">Additional Information</h4>
@@ -66,12 +71,22 @@ const AddContactModal = ({ setisOpen }) => {
                     <div className="grid grid-cols-2 gap-4 mt-4">
                         <div className="mt-3">
                             <label className="font-semibold" htmlFor="additional_phone_number">Additional Phone</label>
-                            <input placeholder="Phone Number" {...register("additional_phone_number")} id="additional_phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                            <input placeholder="Phone Number" {...register("additional_phone_number")} onKeyPress={(e) => {
+                                    const keyCode = e.which || e.keyCode;
+                                    if (keyCode < 48 || keyCode > 57) {
+                                        e.preventDefault();
+                                    }
+                                }} id="additional_phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
                         </div>
 
                         <div className="mt-3">
                             <label className="font-semibold" htmlFor="fax_number">Fax</label>
-                            <input placeholder="Fax Number" {...register("fax_number")} id="fax_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                            <input placeholder="Fax Number" {...register("fax_number")} onKeyPress={(e) => {
+                                    const keyCode = e.which || e.keyCode;
+                                    if (keyCode < 48 || keyCode > 57) {
+                                        e.preventDefault();
+                                    }
+                                }} id="fax_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
                         </div>
                     </div>
 

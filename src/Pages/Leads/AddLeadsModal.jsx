@@ -51,7 +51,12 @@ const AddLeadsModal = ({ setisOpen }) => {
 
                         <div>
                             <label className="font-semibold" htmlFor="phone_number">Phone</label>
-                            <input placeholder="Phone Number" {...register("phone_number")} id="phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                            <input placeholder="Phone Number" {...register("phone_number")} onKeyPress={(e) => {
+                                    const keyCode = e.which || e.keyCode;
+                                    if (keyCode < 48 || keyCode > 57) {
+                                        e.preventDefault();
+                                    }
+                                }} id="phone_number" type="tel" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
                         </div>
 
                         <div>
