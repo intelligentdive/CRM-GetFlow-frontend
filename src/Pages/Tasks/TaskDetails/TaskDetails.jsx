@@ -2,6 +2,9 @@ import { AiOutlineFilter, AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineP
 import { BiEditAlt, BiSearch, BiBarChartAlt2 } from "react-icons/bi";
 import { FaVirus } from "react-icons/fa";
 import ProgressTaskDetails from "./ProgressTaskDetails";
+import LeadtaskDetails from "./LeadtaskDetails";
+import CompleteTaskDetails from "./CompleteTaskDetails";
+import ClosetaskDetails from "./ClosetaskDetails";
 
 
 const TaskDetails = () => {
@@ -31,7 +34,7 @@ const TaskDetails = () => {
                 <div className="lg:col-span-3 col-span-6">
                     <div className="flex items-center justify-between bg-[#F8FAFC] p-2 border-[#E7E7E7] rounded-lg">
                         <div className="flex items-center gap-2">
-                            <FaVirus color="#3EC99E" size={20} />
+                            <FaVirus color="#AE56FF" size={20} />
                             <h2 className="text-[16px] md:text-[20px] font-semibold">Progress</h2>
                             <p className="bg-white text-[#3EC99E] border rounded-xl px-2">4</p>
                         </div>
@@ -51,8 +54,11 @@ const TaskDetails = () => {
                         </div>
                         <div className="border-[#E7E7E7] border p-1"><AiOutlinePlus /></div>
                     </div>
+                    {/* Lead task details */}
+                    <LeadtaskDetails />
                 </div>
 
+                {/* Complete task */}
                 <div className="lg:col-span-3 col-span-6">
                     <div className="flex items-center justify-between bg-[#F8FAFC] p-2 border-[#E7E7E7] rounded-lg">
                         <div className="flex items-center gap-2">
@@ -62,8 +68,11 @@ const TaskDetails = () => {
                         </div>
                         <div className="border-[#E7E7E7] border p-1"><AiOutlinePlus /></div>
                     </div>
+                    {/* Complete task details */}
+                    <CompleteTaskDetails />
                 </div>
 
+                {/* Close task */}
                 <div className="lg:col-span-3 col-span-6">
                     <div className="flex items-center justify-between bg-[#F8FAFC] p-2 border-[#E7E7E7] rounded-lg">
                         <div className="flex items-center gap-2">
@@ -73,6 +82,8 @@ const TaskDetails = () => {
                         </div>
                         <div className="border-[#E7E7E7] border p-1"><AiOutlinePlus /></div>
                     </div>
+                    {/* Close task details */}
+                    <ClosetaskDetails/>
                 </div>
 
             </div>

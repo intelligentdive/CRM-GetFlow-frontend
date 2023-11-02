@@ -4,8 +4,7 @@ import { MdOutlineForwardToInbox } from 'react-icons/md';
 import { FaPhoneVolume } from "react-icons/fa";
 import { AiOutlineTag } from "react-icons/ai";
 
-
-const ProgressTaskDetails = () => {
+const LeadtaskDetails = () => {
     return (
         <div>
 
@@ -13,7 +12,7 @@ const ProgressTaskDetails = () => {
                 <div className="flex items-center justify-between p-4 border-[#E7E7E7] rounded-lg">
                     <div className="flex items-center gap-2">
                         <img src={image} alt="" />
-                        <h4 className="font-semibold md:text-[16px] text-[14px]">Jane Cooper</h4>
+                        <h4 className="font-semibold md:text-[16px] text-[14px]">Brooklyn Simmons</h4>
                     </div>
                     <div className="border-[#E7E7E7] border md:block hidden"><BiDotsHorizontalRounded size={25} /></div>
                 </div>
@@ -23,8 +22,7 @@ const ProgressTaskDetails = () => {
                     <p className="mt-2 text-[#717171] flex items-center gap-1"><FaPhoneVolume size={20} />(205) 555-0100</p>
                     <div className="flex items-center gap-2 mt-3">
                         <AiOutlineTag size={20} color="#717171" />
-                        <button className="btn border border-gray-200 p-0.5 px-2 rounded-lg font-semibold">Important</button>
-                        <button className="btn border border-gray-200 p-0.5 px-2 rounded-lg font-semibold">Lead</button>
+                        <button className="btn border border-gray-200 p-0.5 px-2 rounded-lg font-semibold">Customer</button>
                     </div>
                 </div>
             </div>
@@ -33,7 +31,7 @@ const ProgressTaskDetails = () => {
                 <div className="flex items-center justify-between p-4 border-[#E7E7E7] rounded-lg">
                     <div className="flex items-center gap-2">
                         <img src={image} alt="" />
-                        <h4 className="font-semibold md:text-[16px] text-[14px]">Jane Cooper</h4>
+                        <h4 className="font-semibold md:text-[16px] text-[14px]">Esther Howard</h4>
                     </div>
                     <div className="border-[#E7E7E7] border md:block hidden"><BiDotsHorizontalRounded size={25} /></div>
                 </div>
@@ -94,4 +92,4 @@ const ProgressTaskDetails = () => {
     );
 };
 
-export default ProgressTaskDetails;
+export default LeadtaskDetails;
