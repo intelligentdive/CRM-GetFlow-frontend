@@ -6,7 +6,7 @@ import LeadsScoreChart from "./LeadsScoreChart";
 const Home = () => {
     return (
         <div>
-            <h1 className="lg:text-[34px] md:text-[30px] text-[24px] font-semibold">Home</h1>
+            <h1 className="lg:text-[34px] md:text-[30px] text-[24px] font-semibold">Home page</h1>
             <HomeTabs></HomeTabs>
 
             <div className="grid md:grid-cols-12 grid-cols-1 gap-5 mt-4">
