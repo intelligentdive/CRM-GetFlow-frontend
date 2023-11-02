@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AddTaskModal from "./AddTaskModal";
 import { AiOutlinePlus } from "react-icons/ai";
 import TaskTable from "./TaskTable";
+import TaskDetails from "./TaskDetails";
 
 
 const Tasks = () => {
@@ -25,7 +26,8 @@ const Tasks = () => {
                     <button onClick={() => setisOpen(true)} className="flex items-center gap-2 btn bg-[#00B7E9] hover:bg-[#00B7E9] text-white p-3 rounded-2xl md:mt-0 mt-4 w-full justify-center"><AiOutlinePlus /> Add New Task</button>
                 </div>
             </div>
-            <TaskTable></TaskTable>
+            {/* <TaskTable></TaskTable> */}
+            <TaskDetails/>
 
             {
                 isOpen == true && <AddTaskModal setisOpen={setisOpen} />
