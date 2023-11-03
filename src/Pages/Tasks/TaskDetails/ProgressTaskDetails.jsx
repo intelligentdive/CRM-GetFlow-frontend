@@ -21,7 +21,7 @@ const ProgressTaskDetails = () => {
                 <div className="p-4">
                     <p className="text-[#717171] flex items-center gap-1"><MdOutlineForwardToInbox size={20} />debra@example.com</p>
                     <p className="mt-2 text-[#717171] flex items-center gap-1"><FaPhoneVolume size={20} />(205) 555-0100</p>
-                    <div className="flex items-center gap-2 mt-3">
+                    <div className="flex flex-wrap items-center gap-2 mt-3">
                         <AiOutlineTag size={20} color="#717171" />
                         <button className="btn border border-gray-200 p-0.5 px-2 rounded-lg font-semibold">Important</button>
                         <button className="btn border border-gray-200 p-0.5 px-2 rounded-lg font-semibold">Lead</button>

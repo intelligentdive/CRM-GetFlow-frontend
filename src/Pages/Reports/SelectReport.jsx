@@ -15,7 +15,9 @@ import {
 } from "chart.js";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 import { useEffect, useState } from "react";
-import { BiEditAlt } from "react-icons/bi";
+import { BiBarChartAlt2, BiEditAlt, BiToggleLeft, BiToggleRight } from "react-icons/bi";
+import { BsSoundwave } from "react-icons/bs";
+import { SlCalender } from "react-icons/sl";
 
 const dataset = [
     {
@@ -76,7 +78,7 @@ const SelectReport = () => {
                 {
                     // label: dataset.map(item => item.name),
                     data: dataset.map(item => item.score),
-                    backgroundColor: colors.map((item, index) => `${item.name}`),
+                    backgroundColor: colors.map((item) => `${item.name}`),
                     // backgroundColor: dataset.map((item, index) => `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},0.6)`),
                     borderRadius: 20
                 },
@@ -110,6 +112,13 @@ const SelectReport = () => {
         });
     }, [barThickness]);
 
+
+    const [toggle, setToggle] = useState(true);
+    const [toggle2, setToggle2] = useState(true);
+    const [toggle3, setToggle3] = useState(true);
+    const [toggle4, setToggle4] = useState(true);
+    const toggleClass = " transform translate-x-5";
+
     return (
         <div>
 
@@ -129,7 +138,7 @@ const SelectReport = () => {
 
 
 
-            <div className="bg-white mt-6 border border-gray-200 rounded-lg">
+            <div className="bg-white mt-6 border border-gray-200 rounded-lg mb-10">
                 <div className="flex items-center justify-between mr-[18px] ml-[18px] gap-2">
                     <p className="text-[#717171]">1/08/2023</p>
                     <div className=" mt-[24px] flex items-center gap-2">
@@ -157,7 +166,224 @@ const SelectReport = () => {
                         </div>
                     </div>
                 </div>
+
+
+                {/* Table Start */}
+                <div className="mt-6 overflow-x-auto">
+                    <table className="min-w-full table">
+                        <thead className="bg-[#F8FAFC]">
+                            <tr>
+                                <th className="py-2 px-4 text-sm font-normal text-left text-gray-500 ">
+                                    <div className="flex items-center gap-x-3 font-semibold xl:text-[16px] text-[13px]">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded-lg w-5 h-5 " />
+                                        <div className="flex items-center gap-x-2">
+                                            <span>Lead Source </span>
+                                            <BiBarChartAlt2 />
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th className="px-12 py-2 text-left text-gray-500  font-semibold xl:text-[16px] text-[13px]">
+                                    <div className="flex items-center gap-x-2">
+                                        <span>Created Month</span>
+                                        <SlCalender />
+                                    </div>
+                                </th>
+
+                                <th className="px-4 py-2 font-semibold xl:text-[16px] text-[13px] text-left text-gray-500 ">
+                                    <div className="flex items-center gap-x-2">
+                                        <span>Record Count</span>
+                                        <BsSoundwave />
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+
+                            <tr>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2>Advertisement</h2>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">1/08/2023</p>
+                                        <p className="font-bold mt-1">Sub Total</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] whitespace-nowrap">
+                                    <h2 className="font-semibold">1</h2>
+                                    <h2 className="font-semibold">1</h2>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2>Employee Referral</h2>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">1/08/2023</p>
+                                        <p className="font-bold mt-1">Sub Total</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] whitespace-nowrap">
+                                    <h2 className="font-semibold">4</h2>
+                                    <h2 className="font-semibold">4</h2>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2>Other</h2>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">1/08/2023</p>
+                                        <p className="font-bold mt-1">Sub Total</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] whitespace-nowrap">
+                                    <h2 className="font-semibold">5</h2>
+                                    <h2 className="font-semibold">5</h2>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2>Trade Show</h2>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">1/08/2023</p>
+                                        <p className="font-bold mt-1">Sub Total</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] whitespace-nowrap">
+                                    <h2 className="font-semibold">3</h2>
+                                    <h2 className="font-semibold">3</h2>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2>Website</h2>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">1/08/2023</p>
+                                        <p className="font-bold mt-1">Sub Total</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] whitespace-nowrap">
+                                    <h2 className="font-semibold">7</h2>
+                                    <h2 className="font-semibold">7</h2>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+
+                {/* Counts Row Start */}
+
+                <div className="border border-gray-200 rounded-xl m-6 py-2 px-3 grid md:grid-cols-4 grid-cols-2 items-center gap-5">
+
+                    <div className="flex items-center gap-1 xl:gap-3">
+                        <p className="font-semibold">Row Counts</p>
+                        <div
+                            className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-black rounded-full p-1 cursor-pointer"
+                            onClick={() => {
+                                setToggle(!toggle);
+                            }}
+                        >
+                            {/* Switch */}
+                            <div
+                                className={
+                                    "bg-gray-300 md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" +
+                                    (toggle ? null : toggleClass)
+                                }
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-1 xl:gap-3">
+                        <p className="font-semibold">Row Counts</p>
+                        <div
+                            className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-black rounded-full p-1 cursor-pointer"
+                            onClick={() => {
+                                setToggle2(!toggle2);
+                            }}
+                        >
+                            {/* Switch */}
+                            <div
+                                className={
+                                    "bg-gray-300 md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" +
+                                    (toggle2 ? null : toggleClass)
+                                }
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center  gap-1 xl:gap-3">
+                        <p className="font-semibold">Row Counts</p>
+                        <div
+                            className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-black rounded-full p-1 cursor-pointer"
+                            onClick={() => {
+                                setToggle3(!toggle3);
+                            }}
+                        >
+                            {/* Switch */}
+                            <div
+                                className={
+                                    "bg-gray-300 md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" +
+                                    (toggle3 ? null : toggleClass)
+                                }
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center  gap-1 xl:gap-3">
+                        <p className="font-semibold">Row Counts</p>
+                        <div
+                            className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-black rounded-full p-1 cursor-pointer"
+                            onClick={() => {
+                                setToggle4(!toggle4);
+                            }}
+                        >
+                            {/* Switch */}
+                            <div
+                                className={
+                                    "bg-gray-300 md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out" +
+                                    (toggle4 ? null : toggleClass)
+                                }
+                            ></div>
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
+
+
+
 
 
         </div>
