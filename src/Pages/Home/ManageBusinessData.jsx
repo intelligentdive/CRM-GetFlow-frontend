@@ -20,7 +20,7 @@ const ManageBusinessData = () => {
 
             <div className="mx-6">
 
-                <div className="md:flex md:items-center md:justify-between mt-6">
+                <div className="flex items-center justify-between mt-6">
                     <div>
                         <h1 className="lg:text-[26px] md:text-[20px] text-[18px] font-semibold">Manage Business Data</h1>
                     </div>

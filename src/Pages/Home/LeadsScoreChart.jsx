@@ -33,7 +33,7 @@ const LeadsScoreChart = () => {
             labels: ["Adver", "Empl", "Other", "Trade", "Adver", "Other", "Other", "Trade"],
             datasets: [
                 {
-                    data: [1.6, 0.5, 1.8, 2.7, 1.9, 1.4, 1.7, 2.4],
+                    data: [1.6, 1.2, 1.8, 2.7, 1.9, 1.4, 1.7, 2.4],
                     backgroundColor: "#EFADF3",
                     borderRadius: 8,
                     barThickness: 32,

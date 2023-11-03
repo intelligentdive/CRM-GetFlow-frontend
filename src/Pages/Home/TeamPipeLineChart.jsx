@@ -23,6 +23,8 @@ const TeamPipeLineChart = () => {
         const options = {
             curveType: "function",
             legend: { position: "bottom" },
+            lineWidth: 4,
+            colors: ["#EFADF3", "#837DFB"],
         };
 
         setChartData(data);
