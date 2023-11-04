@@ -1,15 +1,20 @@
-// import { AiOutlinePlus } from "react-icons/ai";
-// import { MdArrowForwardIos } from "react-icons/md";
-// import { Link } from "react-router-dom";
-// import ReportsTable from "./ReportsTable";
-
+import { AiOutlinePlus } from "react-icons/ai";
+import { MdArrowForwardIos } from "react-icons/md";
+import { Link } from "react-router-dom";
+import ReportsTable from "./ReportsTable";
+import { useState } from "react";
 import SelectReport from "./SelectReport";
+
+// import SelectReport from "./SelectReport";
 
 
 const Reports = () => {
+
+    const [isOpen, setisOpen] = useState(false);
+
     return (
         <div>
-            {/* <div className="md:flex md:items-center md:justify-between">
+            <div className="md:flex md:items-center md:justify-between">
                 <div>
                     <h1 className="lg:text-[34px] md:text-[30px] text-[24px] font-semibold">Reports</h1>
                     <div className="flex items-center gap-3">
@@ -19,12 +24,16 @@ const Reports = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="flex items-center gap-2 btn bg-[#00B7E9] hover:bg-[#00B7E9] text-white p-3 rounded-2xl md:mt-0 mt-4 w-full justify-center"><AiOutlinePlus /> Add New</button>
+                    <button onClick={() => setisOpen(true)} className="flex items-center gap-2 btn bg-[#00B7E9] hover:bg-[#00B7E9] text-white p-3 rounded-2xl md:mt-0 mt-4 w-full justify-center"><AiOutlinePlus /> Add New</button>
                 </div>
             </div>
-            <ReportsTable /> */}
+            <ReportsTable />
 
-            <SelectReport />
+            {/* <SelectReport /> */}
+
+            {
+                isOpen == true && <SelectReport setisOpen={setisOpen} />
+            }
 
 
         </div>
