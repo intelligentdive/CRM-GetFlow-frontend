@@ -2,6 +2,7 @@ import { AiOutlineFilter } from "react-icons/ai";
 import { BiEditAlt } from "react-icons/bi";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import OpportunitiesInfoemation from "./OpportunitiesInfoemation";
+import OpportunitiesSteper from "./OpportunitiesSteper";
 
 
 const OpprtunitiesDetails = () => {
@@ -17,12 +18,13 @@ const OpprtunitiesDetails = () => {
                 </div>
             </div>
 
+            {/* Opportunities Steper and Information */}
             <div className="grid grid-cols-12 mt-6 gap-6">
                 <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[595px] overflow-y-scroll">
-                    <p>Steper</p>
+                    <OpportunitiesSteper />
                 </div>
                 <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[595px] overflow-y-scroll">
-                    <OpportunitiesInfoemation/>
+                    <OpportunitiesInfoemation />
                 </div>
             </div>
 
