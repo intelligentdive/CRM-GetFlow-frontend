@@ -17,7 +17,7 @@ const MyLeadTable = () => {
             </div>
 
             {/* Table Start */}
-            <div className=" mt-6 overflow-x-auto mb-5">
+            <div className=" mt-6 overflow-x-auto mb-5 overflow-y-scroll max-h-[350px]">
                 <table className="min-w-full table">
                     <thead className="bg-[#F8FAFC]">
                         <tr>

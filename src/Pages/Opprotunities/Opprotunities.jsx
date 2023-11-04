@@ -4,6 +4,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "react-router-dom";
 import OpprotunitiesTable from "./OpprotunitiesTable";
 import OpprotunitiesModal from "./OpprotunitiesModal";
+import OpprtunitiesDetails from "./OpportunitiesDetails/OpprtunitiesDetails";
 
 
 const Opprotunities = () => {
@@ -12,7 +13,7 @@ const Opprotunities = () => {
 
     return (
         <div>
-            <div className="md:flex md:items-center md:justify-between">
+            {/* <div className="md:flex md:items-center md:justify-between">
                 <div>
                     <h1 className="lg:text-[34px] md:text-[30px] text-[24px] font-semibold">Opprotunities</h1>
                     <div className="flex items-center gap-3">
@@ -30,7 +31,10 @@ const Opprotunities = () => {
 
             {
                 isOpen == true && <OpprotunitiesModal setisOpen={setisOpen} />
-            }
+            } */}
+
+
+            <OpprtunitiesDetails/>
 
 
         </div>

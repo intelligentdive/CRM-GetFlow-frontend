@@ -17,7 +17,7 @@ const MyOpportunities = () => {
             </div>
 
             {/* Table Start */}
-            <div className=" mt-6 overflow-x-auto mb-5">
+            <div className=" mt-6 overflow-x-auto mb-5 overflow-y-scroll max-h-[350px]">
                 <table className="min-w-full table">
                     <thead className="bg-[#F8FAFC]">
                         <tr>
@@ -45,7 +45,7 @@ const MyOpportunities = () => {
 
                     <tbody className="bg-white divide-y divide-gray-200">
 
-                    <tr>
+                        <tr>
                             <td>
                                 <div className="inline-flex items-center gap-x-3 ">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
