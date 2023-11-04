@@ -3,6 +3,8 @@ import { BiEditAlt } from "react-icons/bi";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import OpportunitiesInfoemation from "./OpportunitiesInfoemation";
 import OpportunitiesSteper from "./OpportunitiesSteper";
+import Upcming_Overdue from "./Upcming_Overdue";
+import ContactRoles from "./ContactRoles";
 
 
 const OpprtunitiesDetails = () => {
@@ -20,11 +22,21 @@ const OpprtunitiesDetails = () => {
 
             {/* Opportunities Steper and Information */}
             <div className="grid grid-cols-12 mt-6 gap-6">
-                <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[595px] overflow-y-scroll">
+                <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[550px] overflow-y-scroll">
                     <OpportunitiesSteper />
                 </div>
-                <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[595px] overflow-y-scroll">
+                <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[550px] overflow-y-scroll">
                     <OpportunitiesInfoemation />
+                </div>
+            </div>
+
+            {/* Opportunities Upcming & Overdue Contact Roles */}
+            <div className="grid grid-cols-12 mt-6 gap-6">
+                <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[350px] overflow-y-scroll">
+                    <Upcming_Overdue />
+                </div>
+                <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[350px] overflow-y-scroll">
+                    <ContactRoles />
                 </div>
             </div>
 

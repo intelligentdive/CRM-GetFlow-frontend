@@ -87,19 +87,19 @@ const OpportunitiesSteper = () => {
                                         <hr className="mt-1 mb-4" />
 
                                         <ol className="mt-8">
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-start gap-2">
                                                 <div className="p-1 bg-gray-200 rounded-full"></div>
                                                 <li className="font-semibold text-[#717171]">Acquire agreements as necessary</li>
                                             </div>
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-start gap-2">
                                                 <div className="p-1 bg-gray-200 rounded-full"></div>
                                                 <li className="font-semibold text-[#717171]">Acquire agreements as necessary</li>
                                             </div>
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-start gap-2">
                                                 <div className="p-1 bg-gray-200 rounded-full"></div>
                                                 <li className="font-semibold text-[#717171]">Adhere to your own internal discount processes</li>
                                             </div>
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-start gap-2">
                                                 <div className="p-1 bg-gray-200 rounded-full"></div>
                                                 <li className="font-semibold text-[#717171]">Obtain a signed contract</li>
                                             </div>
