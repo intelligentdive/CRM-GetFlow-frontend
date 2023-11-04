@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <div className="md:flex md:items-center md:justify-between">
+            {/* <div className="md:flex md:items-center md:justify-between">
                 <div>
                     <h1 className="lg:text-[34px] md:text-[30px] text-[24px] font-semibold">Dashboard</h1>
                     <div className="flex items-center gap-3">
@@ -24,9 +24,9 @@ const Dashboard = () => {
                 <div>
                     <button onClick={() => setisOpen(true)} className="flex items-center gap-2 btn bg-[#00B7E9] hover:bg-[#00B7E9] text-white p-3 rounded-2xl md:mt-0 mt-4 w-full justify-center"><AiOutlinePlus /> Add New</button>
                 </div>
-            </div>
-            <RecentDashboard/>
-            {/* <NewDashboard/> */}
+            </div> */}
+            {/* <RecentDashboard/> */}
+            <NewDashboard/>
 
             {
                 isOpen == true && <AddDasboard setisOpen={setisOpen} />
