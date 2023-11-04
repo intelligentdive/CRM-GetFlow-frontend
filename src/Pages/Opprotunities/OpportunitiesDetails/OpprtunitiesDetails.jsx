@@ -5,6 +5,7 @@ import OpportunitiesInfoemation from "./OpportunitiesInfoemation";
 import OpportunitiesSteper from "./OpportunitiesSteper";
 import Upcming_Overdue from "./Upcming_Overdue";
 import ContactRoles from "./ContactRoles";
+import FileUpload from "./FileUpload";
 
 
 const OpprtunitiesDetails = () => {
@@ -38,6 +39,10 @@ const OpprtunitiesDetails = () => {
                 <div className="md:col-span-6 col-span-12 border border-gray-200 rounded-lg bg-white max-h-[350px] overflow-y-scroll">
                     <ContactRoles />
                 </div>
+            </div>
+
+            <div className="mt-6">
+                <FileUpload/>
             </div>
 
 
