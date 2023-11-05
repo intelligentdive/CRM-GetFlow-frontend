@@ -1,3 +1,4 @@
+
 import { api } from '../../api/apiSlice';
 
 const leadsApi = api.injectEndpoints({
@@ -5,10 +6,19 @@ const leadsApi = api.injectEndpoints({
     getLeads: builder.query({
       query: () => '/public/fakeData/leads/leads.json',
       providesTags: ['leads'],
-    })
+    }),
+    postLeads: builder.mutation({
+        query: (data) => ({
+          url: '/postApi',
+          method: 'POST',
+          body: data,
+        }),
+        invalidatesTags: ['leads'],
+      }),
   }),
 });
 
 export const {
-  useGetLeadsQuery
+  useGetLeadsQuery,
+  usePostLeadsMutation
 } = leadsApi;

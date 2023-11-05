@@ -2,13 +2,16 @@
 
 import { useForm } from "react-hook-form";
 import { RxCross1 } from "react-icons/rx";
+import { usePostLeadsMutation } from "../../Redux/features/leads/leadsApi";
 
 const AddLeadsModal = ({ setisOpen }) => {
+
+    const [postLeads, { isLoading, isError, isSuccess }] = usePostLeadsMutation();
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const handleDataPost = (data) => {
-        console.log(data);
+        postLeads(data);
         reset();
         reset({ lead_status: '' });
     }
