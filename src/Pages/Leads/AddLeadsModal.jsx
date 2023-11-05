@@ -3,6 +3,8 @@
 import { useForm } from "react-hook-form";
 import { RxCross1 } from "react-icons/rx";
 import { usePostLeadsMutation } from "../../Redux/features/leads/leadsApi";
+import { useDispatch } from "react-redux";
+import { addToLeads } from "../../Redux/features/leads/leadsSlice";
 
 const AddLeadsModal = ({ setisOpen }) => {
 
@@ -10,8 +12,11 @@ const AddLeadsModal = ({ setisOpen }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
+    const dispatch = useDispatch();
+
     const handleDataPost = (data) => {
-        postLeads(data);
+        // postLeads(data);
+        dispatch(addToLeads(data));
         reset();
         reset({ lead_status: '' });
     }

@@ -5,13 +5,17 @@ import { FiPhone } from 'react-icons/fi';
 import { GrStatusGood } from 'react-icons/gr';
 import { useGetLeadsQuery } from "../../Redux/features/leads/leadsApi";
 import Loading from "../Loading/Loading";
+import { useSelector } from "react-redux";
+import tableImage from '../../assets/tableImage/tableIPeople.png';
 
 const LeadsTable = () => {
+
+    const { addLeadsData } = useSelector((state) => state.leads);
 
     const { data: tableDatas, isLoading } = useGetLeadsQuery(undefined, {
         refetchOnMountOrArgChange: true,
         pollingInterval: 30000,
-      });
+    });
 
     if (isLoading) {
         return <Loading />
@@ -77,7 +81,46 @@ const LeadsTable = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                        {/* For Redux */}
+                        {
+                            addLeadsData?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
 
+                                        <div className="flex items-center gap-x-2">
+                                            <img className="object-cover w-10 h-10 rounded-full" src={tableImage} alt="" />
+                                            <div>
+                                                <h2 className="font-bold">{tableData?.full_name}</h2>
+                                                <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">UI/UX Designer</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#0A0A0A] whitespace-nowrap">{tableData?.company}</td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171]">{tableData?.phone_number}</td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-2">
+                                        <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">{tableData?.lead_status}</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
+
+                                        <button className="text-gray-500 transition-colors duration-200 focus:outline-none">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)
+                        }
+
+                        {/* For Backend */}
                         {
                             tableDatas?.map(tableData => <tr key={tableData?._id}>
                                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
