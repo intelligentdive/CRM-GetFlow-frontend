@@ -7,6 +7,8 @@ import tablePeople from '../../assets/tableImage/tableIPeople.png';
 
 const LeadsTable = () => {
 
+    // const { data, isLoading, error } = useGetLeadsQuery(undefined);
+
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 

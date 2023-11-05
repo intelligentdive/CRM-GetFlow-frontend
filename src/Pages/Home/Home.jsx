@@ -18,7 +18,7 @@ const Home = () => {
                 <div className="md:col-span-7 bg-white border border-gray-300 rounded-lg">
                     <LeadsScoreChart />
                 </div>
-                <div className="md:col-span-5 bg-white border border-gray-300 rounded-lg">
+                <div className="md:col-span-5 bg-white border border-gray-300 rounded-lg max-h-[480px] overflow-y-scroll">
                     <LeadsEvents />
                 </div>
             </div>
