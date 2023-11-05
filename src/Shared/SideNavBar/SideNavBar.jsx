@@ -226,7 +226,7 @@ const SideNavBar = () => {
         <div className="hidden lg:block pl-5">
           <div className="">
             <div className="mt-5">
-              <div className="flex items-center gap-2 rounded-lg border border-[#E7E7E7] xl:w-[200px] px-[10px] ">
+              <div className="flex items-center gap-2 rounded-lg border border-[#E7E7E7] xl:w-[200px] lg:w-[140px] px-[10px] ">
                 <BiSearch className="text-[#717171]" size={25} />
                 <input
                   type="text"

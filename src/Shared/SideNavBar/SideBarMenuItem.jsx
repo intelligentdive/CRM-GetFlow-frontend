@@ -2,45 +2,63 @@ import { Link } from "react-router-dom";
 
 
 const SideBarMenuItem = () => {
-    // const pathname = usePathname();
 
     const menuItems = [
         {
             id: 1,
-            //   icons: <RxDashboard className="text-xl" />,
+            text: "Home",
+            link: "/",
+        },
+        {
+            id: 2,
+            text: "Leads",
+            link: "/leads",
+        },
+        {
+            id: 3,
+            text: "Account",
+            link: "/account",
+        },
+        {
+            id: 4,
+            text: "Contact",
+            link: "/contact",
+        },
+        {
+            id: 5,
+            text: "Opprotunities",
+            link: "/opprotunities",
+        },
+        {
+            id: 6,
+            text: "Calender",
+            link: "/calender",
+        },
+        {
+            id: 7,
+            text: "Forecastse",
+            link: "/forecasts",
+        },
+        {
+            id: 8,
             text: "Dashboard",
             link: "/dashboard",
         },
         {
-            id: 2,
-            //   icons: <BsBuildings className="text-xl" />,
-            text: "Property",
-            link: "/property",
+            id: 9,
+            text: "Reports",
+            link: "/reports",
         },
         {
-            id: 3,
-            //   icons: <LuUsers className="text-xl" />,
-            text: "Agent",
-            link: "/agent",
+            id: 10,
+            text: "Quotes",
+            link: "/quotes",
         },
         {
-            id: 4,
-            //   icons: <BsStar className="text-xl" />,
-            text: "Reviews",
-            link: "/reviews",
-        },
-        {
-            id: 5,
-            //   icons: <BiMessageAltDetail className="text-xl" />,
-            text: "Message",
-            link: "/message",
-        },
-        {
-            id: 6,
-            //   icons: <BiUserCircle className="text-xl" />,
-            text: "My Profile",
-            link: "/profile",
-        },
+            id: 11,
+            text: "Campaings",
+            link: "/campaings",
+        }
     ];
 
     return (
@@ -48,18 +66,10 @@ const SideBarMenuItem = () => {
             {menuItems.map((item) => (
                 <li key={item.id}>
                     <Link
-                        to='/'
-                        // href={item.link}
-                        // className=""
-                        className={
-                            "flex items-center gap-[10px] bg-main text-black rounded-lg text-base font-medium py-[16px] px-[23px]"
-                            //   pathname === item?.link
-                            // ? "flex items-center gap-[10px] bg-main text-white rounded-lg text-base font-medium py-[16px] px-[23px]"
-                            // : "flex items-center gap-[10px] bg-none text-text text-base font-medium py-[16px] px-[23px]"
-                        }
+                        to={item.link}
+                        className="flex items-center gap-[10px] bg-main text-black rounded-lg text-base font-medium py-[16px] px-[16px]"
                     >
                         <span> {item.text}</span>
-                        {/* <span> {item.icons}</span> {item.text} */}
                     </Link>
                 </li>
             ))}
