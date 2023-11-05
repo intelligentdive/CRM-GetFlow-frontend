@@ -72,7 +72,7 @@ const SelectReport = ({ setisOpen }) => {
                     </div>
                 </div>
 
-                <div className="border border-gray-200 rounded-xl mt-4 overflow-y-scroll max-h-[350px]">
+                <div className="border border-gray-200 rounded-xl mt-4">
 
                     <div className=' flex flex-wrap items-start justify-between px-4 py-2'>
                         <div>
