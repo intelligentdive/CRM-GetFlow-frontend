@@ -3,7 +3,8 @@ import { api } from '../../api/apiSlice';
 const leadsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getLeads: builder.query({
-      query: () => '/leads.json',
+      query: () => '/public/fakeData/leads/leads.json',
+      providesTags: ['leads'],
     })
   }),
 });
