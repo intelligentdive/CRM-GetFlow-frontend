@@ -2,10 +2,21 @@ import { AiOutlineFilter } from "react-icons/ai";
 import { BiDotsHorizontalRounded, BiEditAlt, BiSearch, BiUserPin } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
-import tablePeople from '../../assets/tableImage/tableIPeople.png';
+import { useGetContactQuery } from "../../Redux/features/contact/contactApi";
+import Loading from '../Loading/Loading.jsx';
 
 
 const ContactTable = () => {
+
+    const { data: tableDatas, isLoading } = useGetContactQuery(undefined, {
+        refetchOnMountOrArgChange: true,
+        pollingInterval: 30000,
+    });
+
+    if (isLoading) {
+        return <Loading />
+    }
+
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 
@@ -64,339 +75,40 @@ const ContactTable = () => {
 
 
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                            {
+                                tableDatas?.map(tableData => <tr key={tableData?._id}>
+                                    <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div className="inline-flex items-center gap-x-3">
+                                            <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+        
+                                            <div className="flex items-center gap-x-2">
+                                                <img className="object-cover w-10 h-10 rounded-full" src={tableData?.contact_name_image} alt="" />
+                                                <div>
+                                                    <h2 className="font-bold">{tableData?.contact_name}</h2>
+                                                    <p className="text-sm font-normal text-[#717171]">{tableData?.contact_mail}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
+                                    </td>
+                                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                         <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                            <p className="text-[#717171]">
+                                            Acmi (Sample)
+                                            </p>
                                         </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                    </td>
+                                    <td className="px-4 py-4 text-[16px] text-[#717171]">{tableData?.contact_phone}</td>
+                                    <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.contact_owner_name}</td>
+                                    <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                        <div className="flex items-center gap-x-6">
+        
+                                            <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                                <BiDotsHorizontalRounded size={30} />
+                                            </button>
                                         </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Amy Jordan (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                    Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">1 (800) 667-6389</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Leslie Alexander</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        
-
-
+                                    </td>
+                                </tr>)
+                            }
                     </tbody>
                 </table>
 

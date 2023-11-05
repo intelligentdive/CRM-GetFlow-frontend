@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import {RxCross1} from 'react-icons/rx';
+import { usePostCalenderEventMutation } from "../../Redux/features/calender/calenderApi";
 
 const AddNewEvent = ({ setAddModalShow }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
+    const [postCalenderEvent, { isLoading, isError, isSuccess }] = usePostCalenderEventMutation();
 
 
     const handleDataPost = (data) => {
-        console.log(data);
+        postCalenderEvent(data);
         reset();
     }
 

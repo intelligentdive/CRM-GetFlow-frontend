@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
+import { usePostContactMutation } from "../../Redux/features/contact/contactApi";
 
 
 const AddContactModal = ({ setisOpen }) => {
 
+    const [postContact, { isLoading, isError, isSuccess }] = usePostContactMutation();
+
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const handleDataPost = (data) => {
-        console.log(data);
+        postContact(data);
         reset();
     }
 

@@ -2,15 +2,17 @@
 import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
+import { usePostopportunityMutation } from "../../Redux/features/opportunity/opportunityApi";
 
 
 const OpprotunitiesModal = ({ setisOpen }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
+    const [postOpportunity, { isLoading, isError, isSuccess }] = usePostopportunityMutation();
 
 
     const handleDataPost = (data) => {
-        console.log(data);
+        postOpportunity(data);
         reset();
     }
 

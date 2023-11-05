@@ -2,11 +2,22 @@ import { AiOutlineFilter } from "react-icons/ai";
 import { BiDotsHorizontalRounded, BiEditAlt, BiSearch, BiUserPin } from "react-icons/bi";
 import { BsCalendar2X } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
-import tablePeople from '../../assets/tableImage/shosa.png';
 import { SiHomeassistantcommunitystore } from "react-icons/si";
+import { useGetOpportunityQuery } from "../../Redux/features/opportunity/opportunityApi";
+import Loading from '../Loading/Loading';
 
 
 const OpprotunitiesTable = () => {
+
+    const { data: tableDatas, isLoading } = useGetOpportunityQuery(undefined, {
+        refetchOnMountOrArgChange: true,
+        pollingInterval: 30000,
+    });
+
+    if (isLoading) {
+        return <Loading />
+    }
+
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 
@@ -73,475 +84,43 @@ const OpprotunitiesTable = () => {
 
 
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                        {
+                            tableDatas?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2 className="font-bold">{tableData?.opportunity_name}</h2>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">
+                                        {tableData?.opportunity_account_name}
+                                        </p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171]">
+                                    <div className="flex items-center gap-x-2">
+                                        <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">{tableData?.opportunity_stage}</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.opportunity_close_date}</td>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <img src={tableData?.opportunity_owner_image} alt="" />
+                                        <h2 className="font-bold">{tableData?.opportunity_owner_name}</h2>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
 
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Acme-140 widgets (Sample)</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        Acmi (Sample)
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Negotiation</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">20-10-23</td>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold">Shosa</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
+                                        <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)
+                        }
 
                     </tbody>
                 </table>

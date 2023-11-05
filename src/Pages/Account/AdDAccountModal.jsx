@@ -1,14 +1,18 @@
 import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
+import { usePostAccountsMutation } from "../../Redux/features/account/accountApi";
 
 
 const AdDAccountModal = ({ setisOpen }) => {
 
+    const [postAccount, { isLoading, isError, isSuccess }] = usePostAccountsMutation();
+
+
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const handleDataPost = (data) => {
-        console.log(data);
+        postAccount(data);
         reset();
     }
 

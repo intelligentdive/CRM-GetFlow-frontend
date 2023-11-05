@@ -5,11 +5,11 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./Calender.css";
 import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { MdArrowForwardIos } from "react-icons/md";
 import AddNewEvent from "./AddNewEvent";
 import ShowEventDetailsModal from "./ShowEventDetailsModal";
+import { useGetCalenderEventDataQuery } from "../../Redux/features/calender/calenderApi";
 const localizer = momentLocalizer(moment);
+import Loading from '../Loading/Loading';
 
 
 const events = [
@@ -58,9 +58,19 @@ const events = [
 ];
 
 const Calender = () => {
+
     const [modalShow, setModalShow] = useState(false);
     const [AddModalShow, setAddModalShow] = useState(false);
     const [data, setData] = useState({});
+
+    const { data: tableDatas, isLoading } = useGetCalenderEventDataQuery(undefined, {
+        refetchOnMountOrArgChange: true,
+        pollingInterval: 30000,
+    });
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     const handleEventClick = (event) => {
         setModalShow(true);
