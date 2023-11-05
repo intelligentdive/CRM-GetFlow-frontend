@@ -5,11 +5,22 @@ import { ImClipboard } from "react-icons/im";
 import tablePeople from '../../assets/tableImage/tableIPeople.png';
 import { BsArrowDownCircle, BsCalendar2X } from "react-icons/bs";
 import { useState } from "react";
+import { useGetForecastDataQuery } from "../../Redux/features/forecast/forecastApi";
+import Loading from '../Loading/Loading';
 
 
 const ForecastTable = () => {
 
     const [isTooltipVisible, setTooltipVisible] = useState(false);
+
+    const { data: tableDatas, isLoading } = useGetForecastDataQuery(undefined, {
+        refetchOnMountOrArgChange: true,
+        pollingInterval: 30000,
+    });
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     const toggleTooltip = () => {
         setTooltipVisible(!isTooltipVisible);
@@ -92,296 +103,43 @@ const ForecastTable = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
+                        {
+                            tableDatas?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+    
+                                        <div className="flex items-center gap-x-2">
+                                            <img className="object-cover w-10 h-10 rounded-full" src={tableData?.forecast_name_image} alt="" />
+                                            <div>
+                                                <h2 className="font-bold">{tableData?.forecast_name} </h2>
+                                                <p className="text-sm font-normal text-[#717171]">{tableData?.forecast_name_type} </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
-                                        </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="font-semibold"> {tableData?.forecast_amount}  </p>
                                     </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
+                                </td>
+                                <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">{tableData?.forecast_close_date}</td>
+                                <td className="px-4 py-4 text-[16px]">{tableData?.forecast_probability} %</td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
                                     <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
-                                        </div>
+                                        <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">{tableData?.forecast_stage}</p>
                                     </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
-                                        </div>
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
+    
+                                        <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
                                     </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">Acme - 80 widests</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="font-semibold"> 10.000.00 </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap text-[#717171]">08.08.2023</td>
-                            <td className="px-4 py-4 text-[16px]">100%</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-
+                                </td>
+                            </tr>)
+                        }
                     </tbody>
                 </table>
 
