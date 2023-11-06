@@ -28,7 +28,7 @@ const MyLeadTable = () => {
                                 </div>
                             </th>
                             <th>
-                                <div className="flex items-center gap-x-2 text-[#717171]">
+                                <div className="flex items-center gap-x-3 text-[#717171]">
                                     <FiPhone />
                                     <span>Phone</span>
                                 </div>
@@ -47,9 +47,9 @@ const MyLeadTable = () => {
 
                         <tr>
                             <td>
-                                <div className="inline-flex items-center gap-x-3 ">
+                                <div className="flex items-center gap-x-3">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <div className="flex items-center gap-x-2">
+                                    <div className="flex flex-wrap items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-semibold lg:font-bold">Amy jordan (Sample)</h2>
@@ -78,7 +78,7 @@ const MyLeadTable = () => {
                             <td>
                                 <div className="inline-flex items-center gap-x-3 ">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <div className="flex items-center gap-x-2">
+                                    <div className="flex flex-wrap items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-semibold lg:font-bold">Amy jordan (Sample)</h2>
@@ -107,7 +107,7 @@ const MyLeadTable = () => {
                             <td>
                                 <div className="inline-flex items-center gap-x-3 ">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <div className="flex items-center gap-x-2">
+                                    <div className="flex flex-wrap items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-semibold lg:font-bold">Amy jordan (Sample)</h2>
@@ -118,7 +118,7 @@ const MyLeadTable = () => {
                             </td>
                             <td className="text-[#717171]"><p>1 (800) 667-6389</p></td>
                             <td>
-                                <div className="flex items-center gap-x-2">
+                                <div className="flex flex-wrap items-center gap-x-2">
                                     <p className="px-3 py-1 font-semibold text-[#6D1473] rounded-full bg-[#F9E3FB]">Pending</p>
                                 </div>
                             </td>

@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
 import { usePostContactMutation } from "../../Redux/features/contact/contactApi";
+import { useDispatch } from "react-redux";
+import { addToContact } from "../../Redux/features/contact/contactSlice";
 
 
 const AddContactModal = ({ setisOpen }) => {
@@ -10,9 +12,13 @@ const AddContactModal = ({ setisOpen }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
+    const dispatch = useDispatch();
+
     const handleDataPost = (data) => {
-        postContact(data);
+        // postContact(data);
+        dispatch(addToContact(data));
         reset();
+        setisOpen(false);
     }
 
     return (

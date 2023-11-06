@@ -4,6 +4,8 @@ import { FaRegUser } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { useGetContactQuery } from "../../Redux/features/contact/contactApi";
 import Loading from '../Loading/Loading.jsx';
+import { useSelector } from "react-redux";
+import image from '../../assets/tableImage/tableIPeople.png';
 
 
 const ContactTable = () => {
@@ -12,6 +14,8 @@ const ContactTable = () => {
         refetchOnMountOrArgChange: true,
         pollingInterval: 30000,
     });
+
+    const { addContactData } = useSelector((state) => state.contact);
 
     if (isLoading) {
         return <Loading />
@@ -56,7 +60,7 @@ const ContactTable = () => {
                             </th>
 
                             <th className="px-4 py-2 font-bold xl:text-[16px] text-[10px] text-left text-gray-500 ">
-                                <div className="flex items-center gap-x-2">
+                                <div className="flex items-center gap-x-3">
                                     <FiPhone />
                                     <span>Phone</span>
                                 </div>
@@ -75,40 +79,76 @@ const ContactTable = () => {
 
 
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                            {
-                                tableDatas?.map(tableData => <tr key={tableData?._id}>
-                                    <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div className="inline-flex items-center gap-x-3">
-                                            <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-        
-                                            <div className="flex items-center gap-x-2">
-                                                <img className="object-cover w-10 h-10 rounded-full" src={tableData?.contact_name_image} alt="" />
-                                                <div>
-                                                    <h2 className="font-bold">{tableData?.contact_name}</h2>
-                                                    <p className="text-sm font-normal text-[#717171]">{tableData?.contact_mail}</p>
-                                                </div>
+                        {/* using redux */}
+                        {
+                            addContactData?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+
+                                        <div className="flex flex-wrap items-center gap-x-2">
+                                            <img className="object-cover w-10 h-10 rounded-full" src={image} alt="" />
+                                            <div>
+                                                <h2 className="font-bold">{tableData?.full_name}</h2>
+                                                <p className="text-sm font-normal text-[#717171]">{tableData?.email}</p>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div>
-                                            <p className="text-[#717171]">
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">
                                             Acmi (Sample)
-                                            </p>
+                                        </p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171]">{tableData?.phone_number}</td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.contact_owner}</td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
+
+                                        <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)
+                        }
+                        {/* using backend */}
+                        {
+                            tableDatas?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+
+                                        <div className="flex flex-wrap items-center gap-x-2">
+                                            <img className="object-cover w-10 h-10 rounded-full" src={tableData?.contact_name_image} alt="" />
+                                            <div>
+                                                <h2 className="font-bold">{tableData?.contact_name}</h2>
+                                                <p className="text-sm font-normal text-[#717171]">{tableData?.contact_mail}</p>
+                                            </div>
                                         </div>
-                                    </td>
-                                    <td className="px-4 py-4 text-[16px] text-[#717171]">{tableData?.contact_phone}</td>
-                                    <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.contact_owner_name}</td>
-                                    <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div className="flex items-center gap-x-6">
-        
-                                            <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                                <BiDotsHorizontalRounded size={30} />
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>)
-                            }
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">
+                                            {tableData?.contact_account_name}
+                                        </p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171]">{tableData?.contact_phone}</td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.contact_owner_name}</td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
+
+                                        <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)
+                        }
                     </tbody>
                 </table>
 

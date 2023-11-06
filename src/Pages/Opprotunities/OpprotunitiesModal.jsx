@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
 import { usePostopportunityMutation } from "../../Redux/features/opportunity/opportunityApi";
+import { useDispatch } from "react-redux";
+import { addToOpportunity } from "../../Redux/features/opportunity/opportunitySlice";
 
 
 const OpprotunitiesModal = ({ setisOpen }) => {
@@ -10,10 +12,14 @@ const OpprotunitiesModal = ({ setisOpen }) => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const [postOpportunity, { isLoading, isError, isSuccess }] = usePostopportunityMutation();
 
+    const dispatch = useDispatch();
+
 
     const handleDataPost = (data) => {
-        postOpportunity(data);
+        // postOpportunity(data);
+        dispatch(addToOpportunity(data));
         reset();
+        setisOpen(false);
     }
 
     return (

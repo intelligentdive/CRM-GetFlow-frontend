@@ -49,7 +49,36 @@ const MyOpportunities = () => {
                             <td>
                                 <div className="inline-flex items-center gap-x-3 ">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <div className="flex items-center gap-x-2">
+                                    <div className="flex flex-wrap items-center gap-x-2">
+                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
+                                        <div className="">
+                                            <h2 className="font-semibold lg:font-bold">Acme (Sample)</h2>
+                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><p className="font-semibold">10.000.00</p></td>
+                            <td>
+                                <div className="flex items-center gap-x-2">
+                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex items-center gap-x-6">
+
+                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                        <BiDotsHorizontalRounded size={30} />
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div className="inline-flex items-center gap-x-3 ">
+                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                    <div className="flex flex-wrap items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-semibold lg:font-bold">Acme (Sample)</h2>
@@ -78,7 +107,7 @@ const MyOpportunities = () => {
                             <td>
                                 <div className="inline-flex items-center gap-x-3 ">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <div className="flex items-center gap-x-2">
+                                    <div className="flex flex-wrap items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-semibold lg:font-bold">Acme (Sample)</h2>
@@ -107,36 +136,7 @@ const MyOpportunities = () => {
                             <td>
                                 <div className="inline-flex items-center gap-x-3 ">
                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <div className="flex items-center gap-x-2">
-                                        <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
-                                        <div>
-                                            <h2 className="font-semibold lg:font-bold">Acme (Sample)</h2>
-                                            <p className="text-sm font-normal text-[#717171]">info@salesforce.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><p className="font-semibold">10.000.00</p></td>
-                            <td>
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#ACA8FC] rounded-full bg-[#EAE9FE]">Closed</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div className="inline-flex items-center gap-x-3 ">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <div className="flex items-center gap-x-2">
+                                    <div className="flex flex-wrap items-center gap-x-2">
                                         <img className="object-cover w-10 h-10 rounded-full" src={tablePeople} alt="" />
                                         <div>
                                             <h2 className="font-semibold lg:font-bold">Acme (Sample)</h2>

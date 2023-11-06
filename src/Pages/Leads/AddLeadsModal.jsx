@@ -19,6 +19,7 @@ const AddLeadsModal = ({ setisOpen }) => {
         dispatch(addToLeads(data));
         reset();
         reset({ lead_status: '' });
+        setisOpen(false)
     }
 
     return (
