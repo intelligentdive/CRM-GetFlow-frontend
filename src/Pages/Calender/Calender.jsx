@@ -10,52 +10,7 @@ import ShowEventDetailsModal from "./ShowEventDetailsModal";
 import { useGetCalenderEventDataQuery } from "../../Redux/features/calender/calenderApi";
 const localizer = momentLocalizer(moment);
 import Loading from '../Loading/Loading';
-
-
-const events = [
-    // year-month-date-time(hour-minute-second)
-    {
-        start: moment("2023-11-28T06:30:00").toDate(),
-        end: moment("2023-11-28T07:45:00").toDate(),
-        title: "ENT Appointment",
-        address: "Sylhet",
-        note: "good brain and I've said a lot of things. I'm speaking with myseft, number one.",
-        color: "#D5D3FD"
-    },
-    {
-        start: moment("2023-11-22T04:30:00").toDate(),
-        end: moment("2023-11-22T05:45:00").toDate(),
-        title: "GIT Appointment",
-        address: "Chattogram",
-        note: "I'm speaking with myseft, number one, because ",
-        color: "#FCF1FD"
-    },
-    {
-        start: moment("2023-11-24T22:30:00").toDate(),
-        end: moment("2023-11-24T22:45:00").toDate(),
-        title: "EBM Appointment",
-        address: "Noakhali",
-        note: "I'm speaking with myseft, number one, because I have a very good brain and I've said a lot of things. I'm speaking with myseft, number one.",
-        color: "#DEF6EE"
-    },
-    {
-        start: moment("2023-11-25T01:30:11").toDate(),
-        end: moment("2023-11-26T01:45:00").toDate(),
-        title: "PLF Appointment",
-        address: "Dhaka",
-        note: "I'm speaking with myseft, number one, because I have a very good brain and I've said a lot of things. I'm speaking with myseft, number one.",
-        color: "#EAE9FE"
-    },
-    {
-        start: moment("2023-11-20T14:30:11").toDate(),
-        end: moment("2023-11-20T15:45:00").toDate(),
-        title: "GCL Appointment",
-        address: "Dhaka",
-        note: "I'm speaking with myseft, number one, because I have a very good brain and I've said a lot of things. I'm speaking with myseft, number one.",
-        color: "#D4F3FB"
-    },
-
-];
+import { useSelector } from "react-redux";
 
 const Calender = () => {
 
@@ -63,9 +18,29 @@ const Calender = () => {
     const [AddModalShow, setAddModalShow] = useState(false);
     const [data, setData] = useState({});
 
-    const { data: tableDatas, isLoading } = useGetCalenderEventDataQuery(undefined, {
+    // backend event
+    const { data: calenderEvents, isLoading } = useGetCalenderEventDataQuery(undefined, {
         refetchOnMountOrArgChange: true,
-        pollingInterval: 30000,
+        // pollingInterval: 30000,
+    });
+
+    // redux state event
+    const { addClenderEventData } = useSelector((state) => state.calender);
+    console.log(addClenderEventData);
+
+    // All Event
+    const events = addClenderEventData.map(item => {
+        const startTime = moment(item?.start_date + 'T' + item?.start_time, 'YYYY-MM-DDTHH:mm').toDate();
+        const endTime = moment(item?.end_date + 'T' + item?.end_time, 'YYYY-MM-DDTHH:mm').toDate();
+
+        return {
+            start: startTime,
+            end: endTime,
+            title: item?.subject,
+            color: `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},0.6)`,
+            assigned_to: item?.assigned_to,
+            description: item?.description
+        };
     });
 
     if (isLoading) {
@@ -73,8 +48,8 @@ const Calender = () => {
     }
 
     const handleEventClick = (event) => {
-        setModalShow(true);
         setData(event);
+        setModalShow(true);
     }
 
     return (
@@ -115,11 +90,11 @@ const Calender = () => {
                     />
                 </a>
                 {
-                modalShow && data && <ShowEventDetailsModal data={data} setModalShow={setModalShow} />
-            }
-            {
-                AddModalShow && <AddNewEvent setAddModalShow={setAddModalShow} />
-            }
+                    modalShow && data && <ShowEventDetailsModal data={data} setModalShow={setModalShow} />
+                }
+                {
+                    AddModalShow && <AddNewEvent setAddModalShow={setAddModalShow} />
+                }
             </div>
         </div>
     )

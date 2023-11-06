@@ -2,7 +2,8 @@ import { RxCross1 } from "react-icons/rx";
 
 
 const ShowEventDetailsModal = ({ setModalShow, data }) => {
-    const { title, start, end, address, note } = data;
+    console.log(data);
+    const { title, start, end, assigned_to, description } = data;
 
     // Start Date And Time
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -16,7 +17,7 @@ const ShowEventDetailsModal = ({ setModalShow, data }) => {
     let hours = start.getHours();
     const amPm = hours >= 12 ? "PM" : "AM";
     if (hours > 12) {
-        hours -= 12;
+        hours = hours - 12;
     }
 
     const minutes = String(start.getMinutes()).padStart(2, '0');
@@ -36,8 +37,8 @@ const ShowEventDetailsModal = ({ setModalShow, data }) => {
 
     let hours2 = end.getHours();
     const amPm2 = hours2 >= 12 ? "PM" : "AM";
-    if (hours > 12) {
-        hours -= 12;
+    if (hours2 > 12) {
+        hours2 -= 12;
     }
 
     const minutes2 = String(end.getMinutes()).padStart(2, '0');
@@ -67,13 +68,17 @@ const ShowEventDetailsModal = ({ setModalShow, data }) => {
                     <p className="text-[#8F9BB3]">End:</p>
                     <p className="text-[#222B45]">{formattedDate2} <span className="text-[#8F9BB3]">Time: </span> {formattedTime2}</p>
                 </div>
-                <div className="flex items-center gap-10 mt-2">
-                    <p className="text-[#8F9BB3]">Address:</p>
-                    <p className="text-[#222B45]">{address}</p>
+                <div className="flex items-center gap-3 mt-2">
+                    <p className="text-[#8F9BB3]">Assigned To:</p>
+                    <p className="text-[#222B45]">{assigned_to}</p>
                 </div>
-                <div className="flex items-start gap-16 mt-2">
-                    <p className="text-[#8F9BB3]">Note:</p>
-                    <p className="text-[#222B45]">{note}</p>
+                <div className="flex items-center gap-16 mt-2">
+                    <p className="text-[#8F9BB3]">Title:</p>
+                    <p className="text-[#222B45]">{title}</p>
+                </div>
+                <div className="flex items-start gap-4 mt-2">
+                    <p className="text-[#8F9BB3]">Description:</p>
+                    <p className="text-[#222B45]">{description}</p>
                 </div>
 
             </div>

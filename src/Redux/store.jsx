@@ -8,6 +8,7 @@ import reportSlice from './features/Report/reportSlice';
 import quotesSlice from './features/quotes/quotesSlice';
 import campaignSlice from './features/campaign/campaignSlice';
 import taskSlice from './features/task/taskSlice';
+import addToCalender from './features/calender/calenderSlice';
 
 const store = configureStore({
     reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
         quotes: quotesSlice,
         campaign: campaignSlice,
         task: taskSlice,
+        calender: addToCalender,
         [api.reducerPath]: api.reducer,
     },
     middleware: (getDefaultMiddleware) =>
