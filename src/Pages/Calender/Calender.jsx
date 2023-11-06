@@ -127,36 +127,3 @@ const Calender = () => {
 
 export default Calender;
 
-
-
-
-
-
-
-// react date-time-peaker
-// const date = new Date('Sat Oct 28 2023 06:30:00 GMT+0600 (Bangladesh Standard Time)');
-// const year = date.getFullYear();
-// const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-based, so add 1 and pad with 0 if needed.
-// const day = String(date.getDate()).padStart(2, '0');
-// const hours = String(date.getHours()).padStart(2, '0');
-// const minutes = String(date.getMinutes()).padStart(2, '0');
-// const seconds = String(date.getSeconds()).padStart(2, '0');
-// const isoString = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
-// console.log(isoString); // Output: 2023-10-28T06:30:00
-
-
-
-// Locally input field date and time
-// const startDate = "2023-11-03"
-// const startTime = "02:27"
-// please convert it "2023-11-03T02:27:00"
-// and
-// const startDate = "2023-11-03"
-// const startTime = "14:27"
-// please convert it "2023-11-03T14:27:00"
-
-// answer
-// const startDate = "2023-11-03";
-// const startTime = "02:27";
-// const combinedDateTime = `${startDate}T${startTime}:00`;
-// console.log(combinedDateTime);

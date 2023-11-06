@@ -4,6 +4,10 @@ import leadsReducer from './features/leads/leadsSlice';
 import accountSlice from './features/account/accountSlice';
 import contactSlice from './features/contact/contactSlice';
 import opportunitySlice from './features/opportunity/opportunitySlice';
+import reportSlice from './features/Report/reportSlice';
+import quotesSlice from './features/quotes/quotesSlice';
+import campaignSlice from './features/campaign/campaignSlice';
+import taskSlice from './features/task/taskSlice';
 
 const store = configureStore({
     reducer: {
@@ -11,6 +15,10 @@ const store = configureStore({
         account: accountSlice,
         contact: contactSlice,
         opportunity: opportunitySlice,
+        report: reportSlice,
+        quotes: quotesSlice,
+        campaign: campaignSlice,
+        task: taskSlice,
         [api.reducerPath]: api.reducer,
     },
     middleware: (getDefaultMiddleware) =>

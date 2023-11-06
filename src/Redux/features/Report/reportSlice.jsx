@@ -5,12 +5,12 @@ const initialState = {
 
 }
 
-const calenderSlice = createSlice({
-    name: "calender",
+const reportSlice = createSlice({
+    name: "report",
     initialState,
     reducers: {
 
     }
 })
 
-export default calenderSlice.reducer;
+export default reportSlice.reducer;

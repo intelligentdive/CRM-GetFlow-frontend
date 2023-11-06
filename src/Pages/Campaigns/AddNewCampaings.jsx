@@ -1,15 +1,23 @@
 import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from 'react-icons/rx';
+import { usePostCampaignMutation } from "../../Redux/features/campaign/campaignApi";
+import { useDispatch } from "react-redux";
+import { addToAllCampaign } from "../../Redux/features/campaign/campaignSlice";
 
 const AddNewCampaings = ({ setisOpen }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
+    const [postCampaign, { isLoading, isError, isSuccess }] = usePostCampaignMutation();
+   
+    const dispatch = useDispatch();
 
     const handleDataPost = (data) => {
-        console.log(data);
+        // postCampaign(data);
+        dispatch(addToAllCampaign(data))
         reset();
+        setisOpen(false);
     }
 
     return (

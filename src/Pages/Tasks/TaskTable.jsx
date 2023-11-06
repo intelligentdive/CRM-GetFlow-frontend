@@ -7,8 +7,23 @@ import { SlCalender } from "react-icons/sl";
 import { BsArrowDownCircle } from "react-icons/bs";
 import { LiaCommentSolid } from "react-icons/lia";
 import { FiAlignLeft } from "react-icons/fi";
+import { useGetTaskQuery } from "../../Redux/features/task/taskApi";
+import { useSelector } from "react-redux";
+import Loading from '../Loading/Loading';
 
 const TaskTable = () => {
+
+    const { data: tableDatas, isLoading } = useGetTaskQuery(undefined, {
+        refetchOnMountOrArgChange: true,
+        pollingInterval: 30000,
+    });
+
+    const { addTaskData } = useSelector((state) => state.task);
+
+    if (isLoading) {
+        <Loading />
+    }
+
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 
@@ -79,347 +94,100 @@ const TaskTable = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
+                        {/* using redux */}
+                        {
+                            addTaskData?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2 className="font-bold">{tableData?.assigned_to}</h2>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.subject}</td>
+                                <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">{tableData?.due_date} </p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 whitespace-nowrap">
+                                    <div className="flex items-center gap-x-2">
+                                        {
+                                            tableData?.status == "Not Started" ?
+                                                <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">{tableData?.status}</p>
+                                                :
+                                                <p className="px-3 py-1 font-semibold text-[#166B51] rounded-full bg-[#DEF6EE]">{tableData?.status}</p>
+                                        }
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.priority}</td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171]">
+                                    <p>
+                                        {tableData?.comments && (
+                                            <>
+                                                {tableData.comments.slice(0, 30)}<br />
+                                                {tableData.comments.slice(30, 60)} <br />
+                                                {tableData.comments.slice(60)}
+                                            </>
+                                        )}
                                     </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
+                                </td>
+                                <td className="px-4 py-4 whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
 
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                                        <button className="text-gray-500 transition-colors duration-200">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)
+                        }
 
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
+                        {/* using backend */}
+                        {
+                            tableDatas?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2 className="font-bold">{tableData?.assigned_to}</h2>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.subject}</td>
+                                <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">{tableData?.due_date} </p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 whitespace-nowrap">
+                                    <div className="flex items-center gap-x-2">
+                                        {
+                                            tableData?.status == "Not Started" ?
+                                                <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">{tableData?.status}</p>
+                                                :
+                                                <p className="px-3 py-1 font-semibold text-[#166B51] rounded-full bg-[#DEF6EE]">{tableData?.status}</p>
+                                        }
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">{tableData?.priority}</td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171]">
+                                    <p>
+                                        {tableData?.comments && (
+                                            <>
+                                                {tableData.comments.slice(0, 25)}<br />
+                                                {tableData.comments.slice(25)}
+                                            </>
+                                        )}
                                     </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
+                                </td>
+                                <td className="px-4 py-4 whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
 
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">MD Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">People</td>
-                            <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">
-                                        10/01/24
-                                    </p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-2">
-                                    <p className="px-3 py-1 font-semibold text-[#B500C6] rounded-full bg-[#F9E3FB]">Not Started</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171] whitespace-nowrap">Normal</td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">
-                                <p>"Impressive work! Your task <br /> is truly commendable."</p>
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
+                                        <button className="text-gray-500 transition-colors duration-200">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)
+                        }
 
                     </tbody>
                 </table>

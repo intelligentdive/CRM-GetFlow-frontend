@@ -3,16 +3,24 @@ import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from 'react-icons/rx';
 import { FcBusinessContact } from "react-icons/fc";
+import { usePostTaskMutation } from "../../Redux/features/task/taskApi";
+import { useDispatch } from "react-redux";
+import { addToTask } from "../../Redux/features/task/taskSlice";
 
 
 const AddTaskModal = ({ setisOpen }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
+    const [postTask, { isLoading, isError, isSuccess }] = usePostTaskMutation();
+   
+    const dispatch = useDispatch();
 
     const handleDataPost = (data) => {
-        console.log(data);
+        // postTask(data);
+        dispatch(addToTask(data))
         reset();
+        setisOpen(false);
     }
 
     return (
@@ -80,7 +88,7 @@ const AddTaskModal = ({ setisOpen }) => {
                             <input
                                 type="text"
                                 placeholder="Search Contacts..."
-                                {...register("name")}
+                                {...register("assigned_to")}
                                 className="bg-none w-full outline-none text-[14px] font-semibold"
                                 id="name"
                             />
@@ -100,8 +108,9 @@ const AddTaskModal = ({ setisOpen }) => {
                     </div>
 
                     <div className="mt-3">
-                        <label className="font-semibold" htmlFor="due_date">Due Date</label>
-                        <input {...register("due_date")} id="due_date" type="date" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                        <label className="font-semibold" htmlFor="due_date">Due Date<span className="text-red-500">*</span></label>
+                        <input {...register("due_date", { required: 'Due Date is required' })} id="due_date" type="date" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
+                        {errors.due_date && <p className='text-red-600'>{errors.due_date?.message}</p>}
                     </div>
 
                     <h4 className="font-semibold text-[20px] mt-8">Set Task Reminder</h4>
@@ -109,9 +118,8 @@ const AddTaskModal = ({ setisOpen }) => {
 
                     <div className="grid grid-cols-2 gap-6">
                         <div>
-                            <label className="font-semibold" htmlFor="close_date">Close Date<span className="text-red-500">*</span></label>
-                            <input {...register("close_date", { required: 'Close Date is required' })} id="close_date" type="date" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
-                            {errors.close_date && <p className='text-red-600'>{errors.close_date?.message}</p>}
+                            <label className="font-semibold" htmlFor="close_date">Close Date</label>
+                            <input {...register("close_date")} id="close_date" type="date" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl" />
                         </div>
                         <div>
                             <label className="font-semibold" htmlFor="time">Time</label>
@@ -126,9 +134,8 @@ const AddTaskModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="selectLeadStatus"> Status<span className="text-red-500">*</span> </label>
                         <select {...register('status', { required: 'Status is required' })} id="selectLeadStatus" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='' disabled selected>None</option>
-                            <option value="active">Active</option>
-                            <option value="pending">Pending</option>
+                            <option value="Not Started">Not Started</option>
+                            <option value="Started">Started</option>
                         </select>
                         {errors.status && <p className='text-red-600'>{errors.status?.message}</p>}
                     </div>
@@ -137,9 +144,9 @@ const AddTaskModal = ({ setisOpen }) => {
                         <label className="font-semibold" htmlFor="selectPriorityStatus"> Priority<span className="text-red-500">*</span> </label>
                         <select {...register('priority', { required: 'Priority is required' })} id="selectPriorityStatus" className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-xl"
                         >
-                            <option value='' disabled selected>None</option>
-                            <option value="active">Active</option>
-                            <option value="pending">Pending</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
                         </select>
                         {errors.priority && <p className='text-red-600'>{errors.priority?.message}</p>}
                     </div>

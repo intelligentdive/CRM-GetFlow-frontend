@@ -4,9 +4,21 @@ import { BsCalendar2X } from "react-icons/bs";
 import tablePeople from '../../assets/tableImage/tableIPeople.png';
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineSubscriptions } from "react-icons/md";
+import { useGetReportQuery } from "../../Redux/features/Report/reportApi";
+import Loading from '../Loading/Loading';
 
 
 const ReportsTable = () => {
+
+    const { data: tableDatas, isLoading } = useGetReportQuery(undefined, {
+        refetchOnMountOrArgChange: true,
+        pollingInterval: 30000,
+    });
+    
+    if(isLoading){
+        <Loading/>
+    }
+
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
 
@@ -70,327 +82,40 @@ const ReportsTable = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                        {/* Use Backend */}
+                        {
+                            tableDatas?.map(tableData => <tr key={tableData?._id}>
+                                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                        <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
+                                        <h2 className="font-bold">{tableData?.report_name}</h2>
+                                    </div>
+                                </td>
+                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div>
+                                        <p className="text-[#717171]">{tableData?.folder_name}</p>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] whitespace-nowrap">
+                                    <div className="flex items-center justify-start gap-x-2">
+                                        <img src={tablePeople} alt="" />
+                                        <h2 className="font-bold hidden xl:block">{tableData?.created_by_name}</h2>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-4 text-[16px] text-[#717171]">{tableData?.created_on}</td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <h2 className="font-bold">{tableData?.subscribe_name}</h2>
+                                </td>
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6">
 
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div className="inline-flex items-center gap-x-3">
-                                    <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
-                                    <h2 className="font-bold">Marketng Exec Lead by Source</h2>
-                                </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div>
-                                    <p className="text-[#717171]">Sales and Markiting Reports</p>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] whitespace-nowrap">
-                                <div className="flex items-center justify-start gap-x-2">
-                                    <img src={tablePeople} alt="" />
-                                    <h2 className="font-bold hidden xl:block">Sk Murad Hosain</h2>
-                                </div>
-                            </td>
-                            <td className="px-4 py-4 text-[16px] text-[#717171]">18.08.023,11:33</td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <h2 className="font-bold">Murad Hosain</h2>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                <div className="flex items-center gap-x-6">
-
-                                    <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                        <BiDotsHorizontalRounded size={30} />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
+                                        <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                            <BiDotsHorizontalRounded size={30} />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>)
+                        }
 
                     </tbody>
                 </table>
