@@ -174,7 +174,7 @@ const OpprotunitiesTable = () => {
                                         <button className="text-gray-500 transition-colors duration-200 ">
                                             <BiDotsHorizontalRounded onClick={() => toggleDetailPopup(index)} size={30} />
                                         </button>
-                                        {detailPopups[index] && <div className="absolute -top-7 right-5 bg-mainBG p-2">
+                                        {detailPopups[index] && <div className="absolute -top-7 right-5 bg-white text-black border border-gray-200 rounded-lg shadow-md p-2">
                                             <Link to={`/opportunities/${tableData?._id}`} className="btn font-semibold">Details</Link>
                                         </div>}
                                     </div>
