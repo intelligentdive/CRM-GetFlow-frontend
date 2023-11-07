@@ -84,14 +84,14 @@ const SideNavBar = () => {
                 </div>
                 <div
                     className={
-                        pathname === "/opprotunities"
+                        pathname?.startsWith("/opportunities")
                             ? "nab_item text-[#E52CF0]"
                             : "text-[#717171] nab_item"
                     }
                 >
                     <div className="flex items-center justify-between mt-3 text-[18px] font-semibold">
                         <Link
-                            to="/opprotunities"
+                            to="/opportunities"
                             className="hover:text-[#E52CF0] flex items-center gap-2"
                         >
                             <GoTasklist />
@@ -135,7 +135,7 @@ const SideNavBar = () => {
                 </div>
                 <div
                     className={
-                        pathname === "/dashboard"
+                        pathname === "/dashboard" || pathname === "/newDashboard"
                             ? "nab_item text-[#E52CF0]"
                             : "text-[#717171] nab_item"
                     }

@@ -7,20 +7,32 @@ import { useGetOpportunityQuery } from "../../Redux/features/opportunity/opportu
 import Loading from '../Loading/Loading';
 import { useSelector } from "react-redux";
 import image from '../../assets/tableImage/shosa.png';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const OpprotunitiesTable = () => {
+
 
     const { data: tableDatas, isLoading } = useGetOpportunityQuery(undefined, {
         refetchOnMountOrArgChange: true,
         pollingInterval: 30000,
     });
 
+    const [detailPopups, setDetailPopups] = useState(Array(tableDatas?.length).fill(false));
+
+    const toggleDetailPopup = (index) => {
+        const newDetailPopups = [...detailPopups];
+        newDetailPopups[index] = !newDetailPopups[index];
+        setDetailPopups(newDetailPopups);
+    };
+
     const { addOpportunityData } = useSelector((state) => state.opportunity);
 
     if (isLoading) {
         return <Loading />
     }
+
 
     return (
         <div className="md:mt-6 mt-4 bg-white rounded-xl border border-[#E7E7E7] mb-6">
@@ -90,7 +102,7 @@ const OpprotunitiesTable = () => {
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                         {/* using redux */}
                         {
-                            addOpportunityData?.map(tableData => <tr key={tableData?._id}>
+                            addOpportunityData?.map((tableData, index) => <tr key={tableData?._id}>
                                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                     <div className="inline-flex items-center gap-x-3">
                                         <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
@@ -118,17 +130,19 @@ const OpprotunitiesTable = () => {
                                 </td>
                                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                                     <div className="flex items-center gap-x-6">
-
                                         <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                            <BiDotsHorizontalRounded size={30} />
+                                            <BiDotsHorizontalRounded onClick={() => toggleDetailPopup(index)} size={30} />
                                         </button>
+                                        {detailPopups[index] && <div className="absolute -top-7 right-5 bg-mainBG p-2">
+                                            <Link to={`/opportunities/${tableData?._id}`} className="btn font-semibold">Details</Link>
+                                        </div>}
                                     </div>
                                 </td>
                             </tr>)
                         }
                         {/* using backend */}
                         {
-                            tableDatas?.map(tableData => <tr key={tableData?._id}>
+                            tableDatas?.map((tableData, index) => <tr key={tableData?._id}>
                                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                     <div className="inline-flex items-center gap-x-3">
                                         <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700 w-5 h-5 " />
@@ -154,23 +168,27 @@ const OpprotunitiesTable = () => {
                                         <h2 className="font-bold">{tableData?.opportunity_owner_name}</h2>
                                     </div>
                                 </td>
-                                <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div className="flex items-center gap-x-6">
 
-                                        <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                            <BiDotsHorizontalRounded size={30} />
+                                <td className="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div className="flex items-center gap-x-6 relative">
+                                        <button className="text-gray-500 transition-colors duration-200 ">
+                                            <BiDotsHorizontalRounded onClick={() => toggleDetailPopup(index)} size={30} />
                                         </button>
+                                        {detailPopups[index] && <div className="absolute -top-7 right-5 bg-mainBG p-2">
+                                            <Link to={`/opportunities/${tableData?._id}`} className="btn font-semibold">Details</Link>
+                                        </div>}
                                     </div>
                                 </td>
+
                             </tr>)
                         }
 
                     </tbody>
                 </table>
 
-            </div>
+            </div >
 
-        </div>
+        </div >
     );
 };
 

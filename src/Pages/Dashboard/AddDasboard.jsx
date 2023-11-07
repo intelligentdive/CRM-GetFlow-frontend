@@ -1,17 +1,22 @@
 import { useForm } from "react-hook-form";
-import { BiSearch } from "react-icons/bi";
 import { RxCross1 } from 'react-icons/rx';
-import { FcBusinessContact } from "react-icons/fc";
 import { AiOutlinePlus } from "react-icons/ai";
+import { usePostRecentAddDashboardMutation } from "../../Redux/features/dashboard/dashboardApi";
+import { useDispatch } from "react-redux";
+import { addToRecentDashboard } from "../../Redux/features/dashboard/dashboardSlice";
 
 
 const AddDasboard = ({ setisOpen }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
+    const [postRecentAddDashboard, { isLoading, isError, isSuccess }] = usePostRecentAddDashboardMutation();
+
+    const dispatch = useDispatch();
 
     const handleDataPost = (data) => {
-        console.log(data);
+        // postRecentAddDashboard(data);
+        dispatch(addToRecentDashboard(data));
         reset();
     }
 

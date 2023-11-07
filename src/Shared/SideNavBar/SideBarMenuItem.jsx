@@ -26,8 +26,8 @@ const SideBarMenuItem = () => {
         },
         {
             id: 5,
-            text: "Opprotunities",
-            link: "/opprotunities",
+            text: "opportunities",
+            link: "/Opportunities",
         },
         {
             id: 6,

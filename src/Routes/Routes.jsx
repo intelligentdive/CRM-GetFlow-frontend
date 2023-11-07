@@ -13,6 +13,8 @@ import Quotes from "../Pages/Quotes/Quotes";
 import Campaigns from "../Pages/Campaigns/Campaigns";
 import Tasks from "../Pages/Tasks/Tasks";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import OpprtunitiesDetails from "../Pages/Opprotunities/OpportunitiesDetails/OpprtunitiesDetails";
+import NewDashboard from "../Pages/Dashboard/NewDashboard/NewDashboard";
 
 const router = createBrowserRouter([
   {
@@ -40,8 +42,12 @@ const router = createBrowserRouter([
         element: <Contact/>,
       },
       {
-        path: "/opprotunities",
+        path: "/opportunities",
         element: <Opprotunities/>,
+      },
+      {
+        path: "/opportunities/:_id",
+        element: <OpprtunitiesDetails />,
       },
       {
         path: "/calender",
@@ -70,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard/>,
+      },
+      {
+        path: "/newDashboard",
+        element: <NewDashboard />,
       },
     ],
   },

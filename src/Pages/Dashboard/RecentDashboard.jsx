@@ -9,7 +9,7 @@ const RecentDashboard = () => {
                 <h1 className='md:text-[34px] text-[25px] font-semibold text-center'>Recent Dashboards Appear Here </h1>
                 <h3 className='md:text-[26px] text-[18px] font-semibold text-[#717171] text-center'>Go to All Dashboards to see what’s Available.</h3>
                 <div className='flex items-center justify-center'>
-                    <Link className='text-[#00B7E9] font-semibold'>View All Dashboards</Link>
+                    <Link to='/newDashboard' className='text-[#00B7E9] font-semibold'>View All Dashboards</Link>
                 </div>
             </div>
         </div>

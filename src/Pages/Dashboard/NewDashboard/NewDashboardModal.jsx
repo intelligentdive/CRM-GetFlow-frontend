@@ -1,15 +1,22 @@
 import { useForm } from "react-hook-form";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
+import { usePostNewAddDashboardMutation } from "../../../Redux/features/dashboard/dashboardApi";
+import { useDispatch } from "react-redux";
+import { addToNewDashboard } from "../../../Redux/features/dashboard/dashboardSlice";
 
 
 const NewDashboardModal = ({ setisOpen }) => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
+    const [postNewAddDashboard, { isLoading, isError, isSuccess }] = usePostNewAddDashboardMutation();
+
+    const dispatch = useDispatch();
 
     const handleDataPost = (data) => {
-        console.log(data);
+        // postNewAddDashboard(data);
+        dispatch(addToNewDashboard(data));
         reset();
     }
 

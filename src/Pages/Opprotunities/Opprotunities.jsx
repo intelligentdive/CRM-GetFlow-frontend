@@ -4,7 +4,6 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "react-router-dom";
 import OpprotunitiesTable from "./OpprotunitiesTable";
 import OpprotunitiesModal from "./OpprotunitiesModal";
-// import OpprtunitiesDetails from "./OpportunitiesDetails/OpprtunitiesDetails";
 
 
 const Opprotunities = () => {
@@ -32,9 +31,6 @@ const Opprotunities = () => {
             {
                 isOpen == true && <OpprotunitiesModal setisOpen={setisOpen} />
             }
-
-
-            {/* <OpprtunitiesDetails/> */}
 
 
         </div>

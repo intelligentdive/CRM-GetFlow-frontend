@@ -1,14 +1,18 @@
 
 import { AiOutlinePlus } from 'react-icons/ai';
-import newDashboard from '../../assets/dashboard/new_dashboard.png';
 import { MdArrowForwardIos } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import NewDashboardModal from './NewDashboardModal';
+import newDashboardPic from '../../../assets/dashboard/new_dashboard.png';
+import { useSelector } from 'react-redux';
 
 const NewDashboard = () => {
 
     const [isOpen, setisOpen] = useState(false);
+
+    const { addRecentDashboardData, addNewDashboardData } = useSelector((state) => state.dashboard);
+    console.log(addRecentDashboardData, addNewDashboardData);
 
     return (
         <div>
@@ -17,7 +21,7 @@ const NewDashboard = () => {
                 <div>
                     <h1 className="lg:text-[34px] md:text-[30px] text-[24px] font-semibold">Dashboard</h1>
                     <div className="flex items-center gap-3">
-                        <Link className="disabled cursor-pointer text-[#717171] md:text-[20px] text-[18px]">Dashboard</Link>
+                        <Link to='/dashboard' className="disabled cursor-pointer text-[#717171] md:text-[20px] text-[18px]">Dashboard</Link>
                         <MdArrowForwardIos color="#717171"></MdArrowForwardIos>
                         <Link className="disabled cursor-pointer md:text-[20px] text-[18px] font-semibold">New Dashboard</Link>
                     </div>
@@ -28,7 +32,7 @@ const NewDashboard = () => {
             </div>
             <div className='flex items-center justify-center md:bg-white bg-[#F1FCFE] mt-6 border border-gray-200 rounded-xl mb-[60px]'>
             <div className='mt-[100px] mb-[100px]'>
-                <img src={newDashboard} alt="" />
+                <img src={newDashboardPic} alt="" />
             </div>
         </div>
 

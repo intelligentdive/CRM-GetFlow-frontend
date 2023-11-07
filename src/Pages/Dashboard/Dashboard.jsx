@@ -3,7 +3,6 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
 import RecentDashboard from "./RecentDashboard";
-// import NewDashboard from "./NewDashboard";
 import AddDasboard from "./AddDasboard";
 
 const Dashboard = () => {
@@ -26,7 +25,6 @@ const Dashboard = () => {
                 </div>
             </div>
             <RecentDashboard/>
-            {/* <NewDashboard/> */}
 
             {
                 isOpen == true && <AddDasboard setisOpen={setisOpen} />
